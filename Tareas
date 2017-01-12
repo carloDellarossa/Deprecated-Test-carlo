@@ -1,0 +1,25 @@
+
+- Cot y Orden
+ crear libreria de
+ coy y orden o meter
+ los datos session
+  -crud cot
+  -crud orden
+  Cot
+  -test insertar
+  -test lista
+  -test eliminar
+  -test validar por tiempo
+  Orden
+  -test insertar
+  -test lista
+  -test eliminar
+  -mas funcionalidades
+
+Falta definir
+
+-validacion de stock
+
+seguri con usuario para
+ver bien como paso
+los datos a session

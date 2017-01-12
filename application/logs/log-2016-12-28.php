@@ -1,0 +1,12 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2016-12-28 08:39:15 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-28 08:39:19 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-28 08:54:24 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-28 12:17:53 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-28 12:25:04 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-28 12:33:11 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-28 12:33:44 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-28 12:35:52 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-28 12:38:02 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-28 17:51:11 --> An invalid name was submitted as the product name: ABACO 05dig MED MADERA #019 The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces

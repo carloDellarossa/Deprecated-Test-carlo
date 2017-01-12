@@ -1,0 +1,16 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2016-12-29 08:32:43 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 08:32:47 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 11:01:20 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 11:01:52 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 13:37:08 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 14:01:14 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 14:02:08 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 14:05:13 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 14:07:58 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 15:57:33 --> 404 Page Not Found: /index
+ERROR - 2016-12-29 17:22:54 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 18:06:04 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 18:06:17 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
+ERROR - 2016-12-29 18:08:14 --> Severity: Core Warning --> PHP Startup: Unable to load dynamic library '/usr/lib/php/20131226/php_pgsql.dll' - /usr/lib/php/20131226/php_pgsql.dll: cannot open shared object file: No such file or directory Unknown 0
