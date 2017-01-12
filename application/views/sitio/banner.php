@@ -40,9 +40,14 @@
     border: 2px solid #cecece;
     border-radius: 10px;
 }
+    @media (max-width: 770px) {
+        #presentacion {
+            display: none;
+        }
+    }
 
 </style>
-<div class="container">
+<div class="container" id="presentacion">
   <br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->

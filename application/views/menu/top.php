@@ -141,15 +141,19 @@ ul.contacto {
 </style>
 		<nav class="navbar navbar-top navbar-fixed-top " style="z-index: 3;">
 		  <div class="container-fluid">
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#barra" aria-expanded="false">
+            <span class="sr-only">Menu Mobil</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+        </div>
+        <!--Boton vista en mibil -->
 
-		    	<!--Boton vista en mibil -->
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Menu Mobil</span>
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span>
-				</button>
+		    <div class="collapse navbar-collapse" id="barra">
+
+
 		    	<!--Telefono -->
 				<ul class="nav navbar-nav navbar-left">
 		    	<li><p class="navbar-text navbar-left">Telefono: <a href="#" class="navbar-link">+5641 2785 336</a></p></li>
@@ -177,7 +181,7 @@ ul.contacto {
                             <div class="form-group">
                                 <label for="text">Consulta</label>
                                 <textarea rows="3" cols="31">
-                                
+
                                 </textarea>
                             </div>
 
@@ -253,3 +257,19 @@ ul.contacto {
 		    </div>
 		  </div>
 		</nav>
+<script>
+jQuery(document).ready(function($) {
+  $(".button-collapse").sideNav({
+    menuWidth: 240, // Default is 240
+    edge: 'left', // Choose the horizontal origin
+    closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: false, // Choose whether you can drag to open on touch screens
+   // transition: 1.5s
+  }
+
+  );
+});
+$j(function() {
+  $j('#vticker_top').vTicker();
+});
+</script>

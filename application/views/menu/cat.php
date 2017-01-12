@@ -87,6 +87,7 @@
     color: #ffffff;
     background-color: #757575;
   }
+
 }
 </style>
 		<nav class="navbar navbar-cat navbar-fixed-top" style="top: 50px; z-index: 2;">
@@ -106,13 +107,50 @@
 			        <!--Menu Categorias -->
 			        <li class="dropdown">
 			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria 1<span class="caret"></span></a>
-			        <ul class="dropdown-menu">
-			            <li><a href="#">Tienda 1</a></li>
-			            <li><a href="#">Tienda 2</a></li>
-			            <li><a href="#">Tienda 3</a></li>
-			            <li><a href="#">Tienda 4</a></li>
-			            <li><a href="#">Venta a empresas</a></li>
+
+              <ul class="dropdown-menu" style="width : 770px">
+
+                  <li><a href="#"><h3>Sub cat 1</h3></a></li>
+                  <ul>
+                    <li><a href="#">Tienda 1</a></li>
+                    <li><a href="#">Tienda 2</a></li>
+                    <li><a href="#">Tienda 3</a></li>
+                    <li><a href="#">Tienda 4</a></li>
+                    <li><a href="#">Venta a empresas</a></li>
+                  </ul>
+
+
+                  <li><a href="#"><h3>Sub cat 2</h3></a></li>
+                  <ul>
+                    <li><a href="#">Tienda 1</a></li>
+                    <li><a href="#">Tienda 2</a></li>
+                    <li><a href="#">Tienda 3</a></li>
+                    <li><a href="#">Tienda 4</a></li>
+                    <li><a href="#">Venta a empresas</a></li>
+                  </ul>
+
+
+                  <li><a href="#"><h3>Sub cat 3</h3></a></li>
+                  <ul>
+                    <li><a href="#">Tienda 1</a></li>
+                    <li><a href="#">Tienda 2</a></li>
+                    <li><a href="#">Tienda 3</a></li>
+                    <li><a href="#">Tienda 4</a></li>
+                    <li><a href="#">Venta a empresas</a></li>
+                  </ul>
+
+
+                  <li><a href="#"><h3>Sub cat 4</h3></a></li>
+                  <ul>
+                    <li><a href="#">Tienda 1</a></li>
+                    <li><a href="#">Tienda 2</a></li>
+                    <li><a href="#">Tienda 3</a></li>
+                    <li><a href="#">Tienda 4</a></li>
+                    <li><a href="#">Venta a empresas</a></li>
+                  </ul>
+          
 			        </ul>
+
 			        </li>
 			        <li class="dropdown">
 			       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria 2<span class="caret"></span></a>
@@ -158,4 +196,3 @@
 		    </div>
 		  </div>
 		</nav>
-

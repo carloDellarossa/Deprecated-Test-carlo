@@ -30,6 +30,8 @@
   </head>
   <body style="padding-top: 100px;">  <!--Modificar luego en un style general 50 menu top 50 menu cat 10 espacio-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo site_url('js/bootstrap.min.js');?>"></script>
