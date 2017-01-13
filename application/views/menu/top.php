@@ -139,7 +139,7 @@ ul.contacto {
   background-color: red;
 }*/
 </style>
-		<nav class="navbar navbar-top navbar-fixed-top " style="z-index: 3;">
+		<nav class="navbar navbar-top navbar-fixed-top " style="z-index: 10;">
 		  <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#barra" aria-expanded="false">

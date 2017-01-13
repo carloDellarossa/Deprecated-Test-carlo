@@ -90,7 +90,7 @@
 
 }
 </style>
-		<nav class="navbar navbar-cat navbar-fixed-top" style="top: 50px; z-index: 2;">
+		<nav class="navbar navbar-cat navbar-fixed-top" style="top: 50px; z-index: 9;">
 		  <div class="container-fluid">
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -148,7 +148,7 @@
                     <li><a href="#">Tienda 4</a></li>
                     <li><a href="#">Venta a empresas</a></li>
                   </ul>
-          
+
 			        </ul>
 
 			        </li>
