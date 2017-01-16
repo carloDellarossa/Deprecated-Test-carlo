@@ -157,8 +157,8 @@ ul.contacto {
 		    	<!--Telefono -->
 				<ul class="nav navbar-nav navbar-left">
 		    	<li><p class="navbar-text navbar-left">Telefono: <a href="#" class="navbar-link">+5641 2785 336</a></p></li>
-		     	</ul>
-		      	<ul class="nav navbar-nav navbar-right">
+		    </ul>
+		    <ul class="nav navbar-nav navbar-right">
 			        <li><a href="#">Quienes Somos</a></li>
 			        <li><a href="#">Trabaje con nosotros</a></li>
               <!-- menu contacto -->
