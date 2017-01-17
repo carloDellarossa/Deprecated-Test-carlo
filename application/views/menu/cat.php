@@ -1,17 +1,18 @@
 <style>
 .navbar-cat {
   background-color: #ffffff;
-  border-color: #757575;
+  border-color: #b2b1b1;
   top: 50px;
   z-index: 9;
+  padding: 4px;
 }
-
 .navbar-cat .navbar-brand {
   color: #000000;
 }
 .navbar-cat .navbar-brand:hover,
 .navbar-cat .navbar-brand:focus {
-  color: #ffffff;
+  color: #000000;
+
 }
 .navbar-cat .navbar-text {
   color: #000000;
@@ -21,7 +22,7 @@
 }
 .navbar-cat .navbar-nav > li > a:hover,
 .navbar-cat .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: #000000;
 }
 .navbar-cat .navbar-nav > li > .dropdown-menu {
   background-color: #ffffff;
@@ -31,36 +32,38 @@
 }
 .navbar-cat .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar-cat .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #ffffff;
-  background-color: #757575;
+  color: #000000;
+  background-color: #cecece;
 }
 .navbar-cat .navbar-nav > li > .dropdown-menu > li > .divider {
-  background-color: #757575;
+  background-color: #cecece;
 }
 .navbar-cat .navbar-nav .open .dropdown-menu > .active > a,
 .navbar-cat .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-cat .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #ffffff;
-  background-color: #757575;
+  color: #000000;
+  background-color: #cecece;
 }
 .navbar-cat .navbar-nav > .active > a,
 .navbar-cat .navbar-nav > .active > a:hover,
 .navbar-cat .navbar-nav > .active > a:focus {
-  color: #ffffff;
-  background-color: #757575;
+  border: ;
+  border-color : #cecece;
+  color: #000000;
+  background-color: #cecece;
 }
 .navbar-cat .navbar-nav > .open > a,
 .navbar-cat .navbar-nav > .open > a:hover,
 .navbar-cat .navbar-nav > .open > a:focus {
-  color: #ffffff;
-  background-color: #757575;
+  color: #000000;
+  background-color: #cecece;
 }
 .navbar-cat .navbar-toggle {
-  border-color: #757575;
+  border-color: #cecece;
 }
 .navbar-cat .navbar-toggle:hover,
 .navbar-cat .navbar-toggle:focus {
-  background-color: #757575;
+  background-color: #cecece;
 }
 .navbar-cat .navbar-toggle .icon-bar {
   background-color: #000000;
@@ -73,7 +76,7 @@
   color: #000000;
 }
 .navbar-cat .navbar-link:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 @media (max-width: 767px) {
@@ -82,49 +85,46 @@
   }
   .navbar-cat .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-cat .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #ffffff;
+    color: #000000;
   }
   .navbar-cat .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-cat .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-cat .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #ffffff;
-    background-color: #757575;
+    color: #000000;
+    background-color: #cecece;
   }
-
 }
 /*
 carro de compra */
 .lista-carro{
-	margin-top:20px;
-	margin-bottom:40px;
-	font-size:13px
+	margin-top:10px;
+	margin-bottom:20px;
+	font-size:13px;
+  margin: 0;
+  padding: 0;
 }
-.lista-carro .title{
-	position:relative
-}
-.lista-carro .title h2{
-	font-size:20px;
-	line-height:50px;
-	margin-bottom:0
-}
-.lista-carro .lista-productos-carro{
+
+.lista-productos-carro{
 	margin-left:-10px;
-	min-height:200px
+	min-height:100px;
+  max-width : 252px
 }
-.lista-carro .lista-productos-carro li{
-	list-style:none;padding:0 0 20px 10px;
+.lista-productos-carro li{
+	list-style:none;
+  padding:0 0 0 0;
 	margin-left:0;
 	float:left
 }
-.lista-carro .lista-productos-carro li a{
+ .lista-productos-carro li a{
 	color:#333;
 	display:block
 }
-.lista-carro .lista-productos-carro li a:hover{
+ .lista-productos-carro li a:hover{
 	text-decoration:none
 }
 .lista-carro .producto-carro{
-	position:relative;padding:0 10px;
+	position:relative;
+  padding:0 10px;
 	border:1px solid transparent;
 	background-color:#fff
 }
@@ -192,7 +192,9 @@ carro de compra */
 	background-color:#999
 }
 .contenedor-producto-carro{
-	margin-top:20px
+	margin-top:20px;
+  min-height:100px;
+  max-width : 252px
 }
 </style>
 		<nav class="navbar navbar-cat navbar-fixed-top">
@@ -207,7 +209,7 @@ carro de compra */
 				    <span class="icon-bar"></span>
 				</button>
 		      	<!-- Icono marca link a Inicio -->
-		    	<a class="navbar-brand" href="Inicio"><img class="img-responsive center-block" alt="Brand" src="<?php echo site_url('img/logo.png');?>"></a>
+		    	<a class="navbar-brand" href="Inicio"><img class="" alt="Brand" src="<?php echo site_url('img/logo.png');?>" align="top"></a>
 		      <ul class="nav navbar-nav navbar-left" >
 			        <!--Menu Categorias -->
 			        <li class="dropdown">
@@ -301,39 +303,36 @@ carro de compra */
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <i class="glyphicon glyphicon-shopping-cart"></i> Cart <span class="badge">3</span>
+              <i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;<span class="badge"><?php echo $this->cart->total_items(); ?></span>
             </a>
-              <ul class="dropdown-menu animated slideInRight lista-productos-carro" style="max-width : 252px">
+              <ul class="dropdown-menu animated slideInRight lista-productos-carro">
                 <div class="lista-carro">
-                  <div class="info-carro">
-                    <i class="glyphicon glyphicon-shopping-cart"></i><span class="badge">3</span>
-                    <div class="info-carro-total">
-                        <span>Total:</span>
-                        <span>$2,229.97</span>
-                    </div>
-                  </div>
                   <div class="contenedor-producto-carro container">
-                        <li class="col-lg-2 col-md-2 col-sm-2">
+                  <?php
+                    $carro = $this->cart->contents();
+                    if(isset($carro )){
+                      foreach ($carro as $p) {
+                  ?>
+                        <li class="col-lg-12 col-md-12 col-sm-12">
                           <div class="producto-carro">
                             <div class="imagen-carro">
-                              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
+                              <img  src="<?php echo site_url('img/nodisponible.jpg');?>"/>
                             </div>
                             <div class="producto-carro-info">
                               <div class="row">
                                 <div class="tamaño">
                                   <div class="precio col-lg-6 col-md-6 col-sm-2">
-                                    <span>$849.99</span>
+                                    <span>Precio :<?php echo $p['price']; ?></span>
                                   </div>
                                   <div class="nombre col-lg-6 col-md-6 col-sm-2">
-                                    <span>Sony DSC-RX100M III</span>
+                                    <span><?php echo $p['name']; ?></span>
                                   </div>
                                   <div class="cantidad col-lg-6 col-md-6 col-sm-2">
-                                    <span>Quantity: 01</span>
+                                    <span>Cantidad : <?php echo $p['qty']; ?></span>
+                                    <?php echo anchor('index.php/Inicio/remove/'.$p['rowid'],'X'); ?>
                                   </div>
-                                  <div class="btnEliminar col-lg-6 col-md-2 col-sm-2">
-                                    <button type="button" class="">
-                                      <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
+                                  <div class="col-lg-6 col-md-2 col-sm-2">
+                                    <h1></h1>
                                   </div>
                                 </div>
                               </div>
@@ -341,9 +340,26 @@ carro de compra */
                           </div>
                         </li>
 
-                        <li>
-                          <a href="#" class="button">Checkout</a>
-                        </li>
+
+                        <?php
+                      } ?>
+                      <li class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="info-carro">
+                          <div class="info-carro-total">
+                              <br>
+                              <i class="glyphicon glyphicon-shopping-cart"></i>
+                              <span>Total:</span>
+                              <span><?php echo $this->cart->total(); ?></span>
+                          </div>
+                        </div>
+                        <?php echo anchor('index.php/Carro', 'Ir al carro de compra') ?>
+                        <?php echo anchor('index.php/Carro', 'Finalisar la compra') ?>
+                      </li>
+                       <?php }else{ ?>
+                          <li>
+                            <h2>No hay productos en el carro<h2>
+                          </li>
+                        <?php } ?>
                   </div>
                 </div>
               </ul>

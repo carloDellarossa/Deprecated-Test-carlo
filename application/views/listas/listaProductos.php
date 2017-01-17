@@ -5,11 +5,12 @@
 	font-size:13px
 }
 .lista-todos-productos .title{
-	position:relative
+	position:relative;
 }
-.lista-todos-productos .title h2{
+.lista-todos-productos .title h1{
 	font-size:20px;
 	line-height:50px;
+	text-align: center;
 	margin-bottom:0
 }
 .lista-todos-productos .lista-productos{
@@ -103,11 +104,12 @@
 <!--Lista de productos-->
 <div class="lista-todos-productos">
   <div class="title container">
-    <h2>Productos</h2>
+    <h1>Productos mas vendidos</h1>
   </div>
   <div class="contenedor-producto container">
 	    <ul class="lista-productos">
 	      <?php foreach ($productosL as $p){
+					echo form_open('index.php/Inicio/agregar');
 	        $file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$p['pro_codprod']. '.jpg';
 	        $file_headers = @get_headers($file); ?>
 	      <li class="col-lg-3 col-md-4 col-sm-6">
@@ -132,9 +134,7 @@
 		                  $<?php echo number_format($p['precio'],'0',',','.')?>
 		                </div>
 										<div class="btnAgregar">
-											<button type="button" class="btn btn-default btn-sm">
-												<span class="glyphicon glyphicon-shopping-cart"></span> Agregar
-											</button>
+											<?php echo form_submit('action','Agregar al carro'); ?>
 										</div>
 									</div>
 									<div class="nombre col-lg-6 col-md-6 col-sm-12">
@@ -145,6 +145,11 @@
 	          </a>
 	        </div>
 	      </li>
+				<?php echo form_hidden('id', $p['pro_codprod']); ?>
+				<?php echo form_hidden('name', $p['pro_desc']); ?>
+				<?php echo form_hidden('price', $p['precio']); ?>
+
+				<?php echo form_close(); ?>
 		 <?php }?>
 	    </ul>
 		</div>

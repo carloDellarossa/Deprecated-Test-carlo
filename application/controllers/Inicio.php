@@ -4,12 +4,12 @@
 class Inicio extends CI_Controller {
 
 	public function index()
-	{		
-		
+	{
+
 		//librerias
 		$this->load->library('cart');
 		//models
-			//producto	
+			//producto
 			$this->load->model('Producto');
 			$data1['productosL'] = $this->Producto->listaProductos();
 			$data2['productosO'] = $this->Producto->listaOfertas();
@@ -26,16 +26,13 @@ class Inicio extends CI_Controller {
 		$this->load->view('sitio/redesSociales');
 		$this->load->view('sitio/sucursales');
 		$this->load->view('sitio/footer');
-
-		//carro por ahora
-		$this->load->view('carro/carroMenu');
 	}
 
 
 		function agregar() {
-		
+
 		// $this->load->model('Producto');
-		
+
 		// $producto = $this->Producto->producto($this->input->post('id'));
 
 		$insert = array(
@@ -50,9 +47,9 @@ class Inicio extends CI_Controller {
 			redirect('index.php/Inicio');
 		}
 
-	
+
 		function remove($rowid) {
-		
+
 		$this->cart->update(array(
 			'rowid' => $rowid,
 			'qty' => 0
