@@ -106,7 +106,7 @@ carro de compra */
 
 .lista-productos-carro{
 	margin-left:-10px;
-	min-height:100px;
+	min-height:100vh;
   max-width : 252px
 }
 .lista-productos-carro li{
@@ -194,11 +194,17 @@ carro de compra */
 .contenedor-producto-carro{
 	margin-top:20px;
   min-height:100px;
-  max-width : 252px
+  max-width : 260px
+}
+
+.scroll {
+    height: auto;
+    max-height: 150%;
+    overflow-x: auto;
 }
 </style>
 		<nav class="navbar navbar-cat navbar-fixed-top">
-		  <div class="container-fluid">
+		  <div class="container-fluid" id="carro">
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 		    	<!--Boton vista en mibil -->
@@ -305,8 +311,8 @@ carro de compra */
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;<span class="badge"><?php echo $this->cart->total_items(); ?></span>
             </a>
-              <ul class="dropdown-menu animated slideInRight lista-productos-carro">
-                <div class="lista-carro">
+              <ul class="dropdown-menu animated slideInRight lista-productos-carro scroll" >
+                <div class="lista-carro" >
                   <div class="contenedor-producto-carro container">
                   <?php
                     $carro = $this->cart->contents();
@@ -322,14 +328,15 @@ carro de compra */
                               <div class="row">
                                 <div class="tamaño">
                                   <div class="precio col-lg-6 col-md-6 col-sm-2">
-                                    <span>Precio :<?php echo $p['price']; ?></span>
+                                    <span>Precio <?php echo number_format($p['price'],'0',',','.')?></span>
                                   </div>
                                   <div class="nombre col-lg-6 col-md-6 col-sm-2">
                                     <span><?php echo $p['name']; ?></span>
                                   </div>
                                   <div class="cantidad col-lg-6 col-md-6 col-sm-2">
                                     <span>Cantidad : <?php echo $p['qty']; ?></span>
-                                    <?php echo anchor('index.php/Inicio/remove/'.$p['rowid'],'X'); ?>
+                                    <?php echo anchor('index.php/Inicio/remove/'.$p['rowid'],'<i class="glyphicon glyphicon-trash"></i>
+    <span class="hidden-tablet"></span>'); ?>
                                   </div>
                                   <div class="col-lg-6 col-md-2 col-sm-2">
                                     <h1></h1>
@@ -368,3 +375,25 @@ carro de compra */
 		    </div> <!-- termina menu de cateoras de la izq y la parte colapsanle-->
 		  </div><!-- termina contenedor -->
 		</nav>
+
+
+    <script type='text/javascript'>
+        /* attach a submit handler to the form */
+        $("#formoid").submit(function(event) {
+
+          /* stop form from submitting normally */
+          event.preventDefault();
+
+          /* get the action attribute from the <form action=""> element */
+          var $form = $( this ),
+              url = $form.attr( 'action' );
+
+          /* Send the data using post with element id name and name2*/
+          var posting = $.post( url, { name: $('#name').val(), name2: $('#name2').val() } );
+
+          /* Alerts the results */
+          posting.done(function( data ) {
+            alert('success');
+          });
+        });
+    </script>

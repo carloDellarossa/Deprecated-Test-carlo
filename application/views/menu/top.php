@@ -159,8 +159,8 @@ ul.contacto {
 		    	<li><p class="navbar-text navbar-left">Telefono: <a href="#" class="navbar-link">+5641 2785 336</a></p></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#">Quienes Somos</a></li>
-			        <li><a href="#">Trabaje con nosotros</a></li>
+			        <li><a href="http://localhost/Test-carlo/index.php/Somos">Quienes Somos</a></li>
+			        <li><a href="http://localhost/Test-carlo/index.php/Trabajo">Trabaje con nosotros</a></li>
               <!-- menu contacto -->
               <li class="dropdown">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown">Contacto<span class="caret"></span></a>
@@ -272,4 +272,5 @@ jQuery(document).ready(function($) {
 $j(function() {
   $j('#vticker_top').vTicker();
 });
+
 </script>

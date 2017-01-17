@@ -1,6 +1,12 @@
-<br><h1 align="center">carrofull.php</h1>
+<style>
+div{
+	padding-left: 50px;
+	padding-right: 50px
+}
+</style>
+<br><h1 align="center">Carro de compras</h1>
 <?php if($productosC = $this->cart->contents()) { ?>
-	<div>
+ <div class="tablaCarro">
 		<table class="table table-hover">
 		<caption>Carro de compras</caption>
 		<thead>
@@ -17,10 +23,11 @@
 		</thead>
 		<?php foreach ($productosC as $item): ?>
 			<?php echo form_open('index.php/Carro/mod/'.$item['rowid']); ?>
+
 			<tr>
 				<td><?php echo $item['id']; ?></td>
 				<td><?php echo $item['name']; ?></td>
-				<td><?php echo $item['price']; ?></td>
+				<td><?php echo number_format($item['price'],'0',',','.')?></td>
 				<td><?php echo $item['rowid']; ?></td>
 				<td><?php echo form_input('qty',$item['qty']);?></td>
 				<td class="remove">
@@ -35,14 +42,22 @@
 		<?php endforeach; ?>
 		<tr class="total">
 			<td colspan="2"><strong>Total</strong></td>
-			<td>$<?php echo $this->cart->total(); ?></td>
+			<td>$<?php echo number_format($this->cart->total(),'0',',','.');?></td>
 		</tr>
 		</table>
 	</div>
 <?php }else{
 echo "no hay productos";
 } ?>
-
-<br><h6> <?php echo anchor('index.php/Inicio', 'Seguir comprando') ?> </h6>
-<br><h6> <?php echo anchor('index.php/Orden', 'Checkout') ?> </h6>
-<br><h6> <?php echo anchor('index.php/Cot', 'Cotisacion') ?> </h6>
+<div>
+	<table class="table table-hover">
+		<tr>
+			<td><h3> <?php echo anchor('index.php/Inicio', '<i class="glyphicon glyphicon-home"></i>
+			<span class="hidden-tablet">Seguir comprando</span>') ?> </h3></td>
+			<td><h3> <?php echo anchor('index.php/Orden', '<i class="glyphicon glyphicon-ok"></i>
+			<span class="hidden-tablet">Finialisar la compra</span>') ?> </h3></td>
+			<td><h3> <?php echo anchor('index.php/Cot', '<i class="glyphicon glyphicon-print"></i>
+			<span class="hidden-tablet">Crear cotisacion</span>') ?> </h6></td>
+		</tr>
+	</table>
+</div>

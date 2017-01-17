@@ -28,7 +28,13 @@
     <title>Libreria Giorgio</title>
 
   </head>
-  <body style="padding-top: 100px;">  <!--Modificar luego en un style general 50 menu top 50 menu cat 10 espacio-->
+  <style>
+  body {
+    padding-top: 100px;
+    position: relative;
+  }
+  </style>
+  <body data-spy="scroll" data-target="#carro">  <!--Modificar luego en un style general 50 menu top 50 menu cat 10 espacio-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script  src="https://code.jquery.com/jquery-3.1.1.js"
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
