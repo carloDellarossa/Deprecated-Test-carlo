@@ -202,6 +202,16 @@ carro de compra */
     max-height: 150%;
     overflow-x: auto;
 }
+
+.categorias {
+
+}
+.subcat li {
+  	list-style:none;
+    padding:0 0 0 0;
+    margin-left:0;
+    float:left
+}
 </style>
 		<nav class="navbar navbar-cat navbar-fixed-top">
 		  <div class="container-fluid" id="carro">
@@ -219,54 +229,124 @@ carro de compra */
 		      <ul class="nav navbar-nav navbar-left" >
 			        <!--Menu Categorias -->
 			        <li class="dropdown">
-			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria 1<span class="caret"></span></a>
-
-              <ul class="dropdown-menu" style="width : 770px">
-
-                  <li><a href="#"><h3>Sub cat 1</h3></a></li>
-                  <ul>
-                    <li><a href="#">Tienda 1</a></li>
-                    <li><a href="#">Tienda 2</a></li>
-                    <li><a href="#">Tienda 3</a></li>
-                    <li><a href="#">Tienda 4</a></li>
-                    <li><a href="#">Venta a empresas</a></li>
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Oficina<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                    <li><a href="#"><h5>Sub cat 1</h5></a></li>
+                    <ul class="">
+                      <li><h6><a href="#">Tienda 1</a></h6></li>
+                      <li><h6><a href="#">Tienda 2</a></h6></li>
+                      <li><h6><a href="#">Tienda 3</a></h6></li>
+                      <li><h6><a href="#">Tienda 4</a></h6></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-2">
+                  <li><a href="#"><h5>Sub cat 1</h5></a></li>
+                  <ul class="categorias">
+                    <li><h6><a href="#">Tienda 1</a></h6></li>
+                    <li><h6><a href="#">Tienda 2</a></h6></li>
+                    <li><h6><a href="#">Tienda 3</a></h6></li>
+                    <li><h6><a href="#">Tienda 4</a></h6></li>
                   </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                <li><a href="#"><h5>Sub cat 1</h5></a></li>
+                <ul class="categorias">
+                  <li><h6><a href="#">Tienda 1</a></h6></li>
+                  <li><h6><a href="#">Tienda 2</a></h6></li>
+                  <li><h6><a href="#">Tienda 3</a></h6></li>
+                  <li><h6><a href="#">Tienda 4</a></h6></li>
+                </ul>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2">
+              <li><a href="#"><h5>Sub cat 1</h5></a></li>
+              <ul class="categorias">
+                <li><h6><a href="#">Tienda 1</a></h6></li>
+                <li><h6><a href="#">Tienda 2</a></h6></li>
+                <li><h6><a href="#">Tienda 3</a></h6></li>
+                <li><h6><a href="#">Tienda 4</a></h6></li>
+              </ul>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+            <li><a href="#"><h5>Sub cat 1</h5></a></li>
+            <ul class="categorias">
+              <li><h6><a href="#">Tienda 1</a></h6></li>
+              <li><h6><a href="#">Tienda 2</a></h6></li>
+              <li><h6><a href="#">Tienda 3</a></h6></li>
+              <li><h6><a href="#">Tienda 4</a></h6></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+          <li><a href="#"><h5>Sub cat 1</h5></a></li>
+          <ul class="categorias">
+            <li><h6><a href="#">Tienda 1</a></h6></li>
+            <li><h6><a href="#">Tienda 2</a></h6></li>
+            <li><h6><a href="#">Tienda 3</a></h6></li>
+            <li><h6><a href="#">Tienda 4</a></h6></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+        <li><a href="#"><h5>Sub cat 1</h5></a></li>
+        <ul class="categorias">
+          <li><h6><a href="#">Tienda 1</a></h6></li>
+          <li><h6><a href="#">Tienda 2</a></h6></li>
+          <li><h6><a href="#">Tienda 3</a></h6></li>
+          <li><h6><a href="#">Tienda 4</a></h6></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2">
+      <li><a href="#"><h5>Sub cat 1</h5></a></li>
+      <ul class="categorias">
+        <li><h6><a href="#">Tienda 1</a></h6></li>
+        <li><h6><a href="#">Tienda 2</a></h6></li>
+        <li><h6><a href="#">Tienda 3</a></h6></li>
+        <li><h6><a href="#">Tienda 4</a></h6></li>
+      </ul>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+    <li><a href="#"><h5>Sub cat 1</h5></a></li>
+    <ul class="categorias">
+      <li><h6><a href="#">Tienda 1</a></h6></li>
+      <li><h6><a href="#">Tienda 2</a></h6></li>
+      <li><h6><a href="#">Tienda 3</a></h6></li>
+      <li><h6><a href="#">Tienda 4</a></h6></li>
+    </ul>
+  </div>
+  <div class="col-lg-2 col-md-2 col-sm-2">
+  <li><a href="#"><h5>Sub cat 1</h5></a></li>
+  <ul class="categorias">
+    <li><h6><a href="#">Tienda 1</a></h6></li>
+    <li><h6><a href="#">Tienda 2</a></h6></li>
+    <li><h6><a href="#">Tienda 3</a></h6></li>
+    <li><h6><a href="#">Tienda 4</a></h6></li>
+  </ul>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2">
+<li><a href="#"><h5>Sub cat 1</h5></a></li>
+<ul class="categorias">
+  <li><h6><a href="#">Tienda 1</a></h6></li>
+  <li><h6><a href="#">Tienda 2</a></h6></li>
+  <li><h6><a href="#">Tienda 3</a></h6></li>
+  <li><h6><a href="#">Tienda 4</a></h6></li>
+</ul>
+</div>
 
 
-                  <li><a href="#"><h3>Sub cat 2</h3></a></li>
-                  <ul>
-                    <li><a href="#">Tienda 1</a></li>
-                    <li><a href="#">Tienda 2</a></li>
-                    <li><a href="#">Tienda 3</a></li>
-                    <li><a href="#">Tienda 4</a></li>
-                    <li><a href="#">Venta a empresas</a></li>
-                  </ul>
 
 
-                  <li><a href="#"><h3>Sub cat 3</h3></a></li>
-                  <ul>
-                    <li><a href="#">Tienda 1</a></li>
-                    <li><a href="#">Tienda 2</a></li>
-                    <li><a href="#">Tienda 3</a></li>
-                    <li><a href="#">Tienda 4</a></li>
-                    <li><a href="#">Venta a empresas</a></li>
-                  </ul>
 
 
-                  <li><a href="#"><h3>Sub cat 4</h3></a></li>
-                  <ul>
-                    <li><a href="#">Tienda 1</a></li>
-                    <li><a href="#">Tienda 2</a></li>
-                    <li><a href="#">Tienda 3</a></li>
-                    <li><a href="#">Tienda 4</a></li>
-                    <li><a href="#">Venta a empresas</a></li>
-                  </ul>
 
+
+                </div>
+              </div>
 			        </ul>
 
 			        </li>
 			        <li class="dropdown">
-			       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria 2<span class="caret"></span></a>
+			       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Escolar<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			            <li><a href="#">Tienda 1</a></li>
 			            <li><a href="#">Tienda 2</a></li>
@@ -276,7 +356,7 @@ carro de compra */
 			        </ul>
 			        </li>
 			        <li class="dropdown">
-			       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria 3<span class="caret"></span></a>
+			       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hogar<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			            <li><a href="#">Tienda 1</a></li>
 			            <li><a href="#">Tienda 2</a></li>
@@ -286,7 +366,7 @@ carro de compra */
 			        </ul>
 			        </li>
 			        <li class="dropdown">
-			       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria 4<span class="caret"></span></a>
+			       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electronica<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			            <li><a href="#">Tienda 1</a></li>
 			            <li><a href="#">Tienda 2</a></li>
@@ -296,7 +376,7 @@ carro de compra */
 			        </ul>
 			        </li>
 			        <li class="dropdown">
-			       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria 5<span class="caret"></span></a>
+			       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jugeteria<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			            <li><a href="#">Tienda 1</a></li>
 			            <li><a href="#">Tienda 2</a></li>
@@ -305,6 +385,26 @@ carro de compra */
 			            <li><a href="#">Venta a empresas</a></li>
 			        </ul>
 			        </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Temporada y Regalos<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="#">Tienda 1</a></li>
+                  <li><a href="#">Tienda 2</a></li>
+                  <li><a href="#">Tienda 3</a></li>
+                  <li><a href="#">Tienda 4</a></li>
+                  <li><a href="#">Venta a empresas</a></li>
+              </ul>
+              </li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Arte<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="#">Tienda 1</a></li>
+                  <li><a href="#">Tienda 2</a></li>
+                  <li><a href="#">Tienda 3</a></li>
+                  <li><a href="#">Tienda 4</a></li>
+                  <li><a href="#">Venta a empresas</a></li>
+              </ul>
+              </li>
 		      </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">

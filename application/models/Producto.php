@@ -69,7 +69,18 @@ class Producto extends CI_Model {
         //lista de productos
         public function testFotos(){
           $result_set = $this->db->query(
-          "select * from producto limit 2");
+          "select
+DISTINCT
+        g.aap_texto as grupo,sg.aap_texto as subgrupo,sg1.aap_texto as subgrupo1,sg2.aap_texto as subgrupo2
+from sto_producto
+left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
+left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
+left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
+left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
+left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
+left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
+left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+order by grupo, subgrupo, subgrupo1,subgrupo2");
           return $result_set->result_array();
         }
 
@@ -158,6 +169,10 @@ class Producto extends CI_Model {
 			order by pre_correlativo asc
 			limit 4");
 			return $result_set->result_array();
+        }
+
+        public function categorias($cat){
+
         }
 }
 
