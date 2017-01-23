@@ -6,6 +6,7 @@ class Testfotos extends CI_Controller {
 
 	public function index()
 	{
+				$this->load->view('sitio/header');
 		$this->load->model('Producto');
 		$data1['productosL'] = $this->Producto->testFotos();
 		$this->load->view('listas/testFotos',$data1);
