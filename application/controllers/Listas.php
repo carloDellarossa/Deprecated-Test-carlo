@@ -45,7 +45,7 @@ public function verPorCat($cat){
 
 			$this->cart->insert($insert);
 
-			redirect('index.php/Inicio');
+			redirect('index.php/Listas');
 		}
 
 
@@ -55,7 +55,9 @@ public function verPorCat($cat){
 			'rowid' => $rowid,
 			'qty' => 0
 		));
-			redirect('index.php/Inicio');
+			redirect('index.php/Listas');
 		}
+
+
 
 }
