@@ -171,7 +171,17 @@ order by grupo, subgrupo, subgrupo1,subgrupo2");
 			return $result_set->result_array();
         }
 
-        public function listaPorCat($cat){
+        public function listaPorCat($p,$t=FALSE){
+          if ($t) {
+            $char = '/';
+            $r = $p .$char. $t;
+          }else{
+            $r = $p;
+          }
+
+          $str = str_replace('%20',' ',$r);
+
+
         	$result_set = $this->db->query(
         	"select
               pro_codprod,
@@ -187,7 +197,10 @@ order by grupo, subgrupo, subgrupo1,subgrupo2");
 
                   case when psl_saldo is null then 0 else round(psl_saldo) end as saldo,
                   case when pre.pre_precio is null then 1 else
-                  round((pre.pre_precio * ((100::numeric - pre.pre_maxdesctorecargo) / 100::numeric)/1.19), 0) end as l10
+                  round((pre.pre_precio * ((100::numeric - pre.pre_maxdesctorecargo) / 100::numeric)/1.19), 0) end as l10,
+                  round(pre_rangoinicial) as ri,
+                  case when pre_rangofinal is null then 999999 else round(pre_rangofinal) end as rf,
+                  round(((100-pre_maxdesctorecargo)/100)*pre_precio) as precio
           from sto_producto
             left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
             left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
@@ -196,13 +209,44 @@ order by grupo, subgrupo, subgrupo1,subgrupo2");
             left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
             left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
             left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
-          where (psl_saldo > 5 and pro_vigencia = 'S') and
-            g.aap_texto LIKE '". $cat[1] ."' or
-            sg.aap_texto LIKE '". $cat[2] ."'
+           where (psl_saldo > 5 and pro_vigencia = 'S')
+           and
+           g.aap_texto SIMILAR TO '". $str ."'
+
+           OR
+
+           sg.aap_texto SIMILAR TO'". $str ."'
           order by pro_desc");
 			return $result_set->result_array();
         }
+
+        public function record_count($p){
+$str = str_replace('%20',' ',$p);
+return $this->db->count_all("sto_producto
+  left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
+  left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
+  left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
+  left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
+  left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
+  left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
+  left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+ where (psl_saldo > 5 and pro_vigencia = 'S')
+ and
+ g.aap_texto SIMILAR TO '". $str ."'
+
+ OR
+
+ sg.aap_texto SIMILAR TO'". $str ."'
+ ");
 }
+
+}
+//and sg.aap_texto = '". $p ."'
+//and
+//   g.aap_texto LIKE '". $cat[1] ."' or
+//   sg.aap_texto LIKE '". $cat[2] ."'
+
+
 
 //con saldo
 

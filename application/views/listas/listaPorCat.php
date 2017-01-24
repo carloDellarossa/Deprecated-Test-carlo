@@ -101,6 +101,14 @@
 	margin-top:20px
 }
 </style>
+
+<?php
+if (count($pXcat) == 0) {
+	echo '<br>No hay productos en esta catergoria';
+}else{
+	//echo '<pre>'; var_dump($pXcat); echo '</pre>';
+	?>
+
 <!--Lista de productos-->
 <div class="lista-todos-productos">
   <div class="title container">
@@ -108,8 +116,8 @@
   </div>
   <div class="contenedor-producto container">
 	    <ul class="lista-productos">
-	      <?php foreach ($productosN as $n){
-					echo form_open('index.php/Inicio/agregar');
+	      <?php foreach ($pXcat as $n){
+					echo form_open('index.php/Listas/agregar');
 	        $file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$n['pro_codprod']. '.jpg';
 	        $file_headers = @get_headers($file); ?>
 	      <li class="col-lg-3 col-md-4 col-sm-6">
@@ -147,10 +155,20 @@
 	      </li>
 				<?php echo form_hidden('id', $n['pro_codprod']); ?>
 				<?php echo form_hidden('name', $n['pro_desc']); ?>
-				<?php echo form_hidden('price', $n['precio']); ?>
+				<?php echo form_hidden('price', $n['precio']); ?> 
 
 				<?php echo form_close(); ?>
 		 <?php }?>
 	    </ul>
 		</div>
 </div>
+<?php
+}
+?>
+<div id="pagination">
+<ul class="tsc_pagination">
+
+<!-- Show pagination links -->
+<?php foreach ($links as $link) {
+echo "<li>". $link."</li>";
+} ?>

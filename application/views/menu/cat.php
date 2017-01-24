@@ -30,17 +30,17 @@
 .navbar-cat .navbar-nav > li > .dropdown-menu > li > a {
   color: #000000;
 }
-.navbar-cat .navbar-nav > li > .dropdown-menu > li > a:hover,
-.navbar-cat .navbar-nav > li > .dropdown-menu > li > a:focus {
+.navbar-cat .navbar-nav > li > .dropdown-menu > li >  a:hover,
+.navbar-cat .navbar-nav > li > .dropdown-menu > li >  a:focus {
   color: #000000;
   background-color: #cecece;
 }
 .navbar-cat .navbar-nav > li > .dropdown-menu > li > .divider {
   background-color: #cecece;
 }
-.navbar-cat .navbar-nav .open .dropdown-menu > .active > a,
-.navbar-cat .navbar-nav .open .dropdown-menu > .active > a:hover,
-.navbar-cat .navbar-nav .open .dropdown-menu > .active > a:focus {
+.navbar-cat .navbar-nav .open .dropdown-menu > .active >  a,
+.navbar-cat .navbar-nav .open .dropdown-menu > .active  >  a:hover,
+.navbar-cat .navbar-nav .open .dropdown-menu > .active >  a:focus {
   color: #000000;
   background-color: #cecece;
 }
@@ -80,11 +80,11 @@
 }
 
 @media (max-width: 767px) {
-  .navbar-cat .navbar-nav .open .dropdown-menu > li > a {
+  .navbar-cat .navbar-nav .open .dropdown-menu > li > p > a {
     color: #000000;
   }
-  .navbar-cat .navbar-nav .open .dropdown-menu > li > a:hover,
-  .navbar-cat .navbar-nav .open .dropdown-menu > li > a:focus {
+  .navbar-cat .navbar-nav .open .dropdown-menu > li > p > a:hover,
+  .navbar-cat .navbar-nav .open .dropdown-menu > li > p > a:focus {
     color: #000000;
   }
   .navbar-cat .navbar-nav .open .dropdown-menu > .active > a,
@@ -269,6 +269,8 @@ carro de compra */
     padding: 5px;
     overflow-x: hidden;
 }
+
+
 </style>
 
 
@@ -815,19 +817,19 @@ carro de compra */
                   foreach($categorias[$keys[$i]] as $key => $value) {
                     ?>
                             <li class="dropdown-submenu">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $key ;?>
+
+                              <a class="dropdown-toggle"><?php echo anchor('index.php/Listas/verPorCat?cat='.urlencode($key),''.$key.'','class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"'); ?></a>
                                 <ul class="dropdown-menu scrollable-menu">
                                 <?php
                                 foreach ($value as $s => $p) { ?>
 
-                                    <li><a href="#"><?php echo $p;?></a></li>
+                                    <li><a href="<?php echo site_url('index.php/Listas/verPorCat?cat='.urlencode($p).'') ?>"><?php echo $p;?></a></li>
 
                                 <?php
                                 }
                                 ?>
                                 </ul>
-                              </a>
+
                             </li>
                           <!-- <a href="#"><h5><?php echo $key; ?></h5></a> -->
 
