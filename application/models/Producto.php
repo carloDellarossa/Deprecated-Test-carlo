@@ -25,12 +25,6 @@ class Producto extends CI_Model {
 
         	$local = '1'; // por ahora 1 seria tienda default
 
-        	if (isset($p)) {
-        		$codigo = $p;
-        	}else{
-        		$codigo = '01001009';
-        	}
-
         	$result_set = $this->db->query(
 	        	"select
     				pro_codprod,
@@ -50,16 +44,28 @@ class Producto extends CI_Model {
 			where
         		r.pre_codprod = p.pro_codprod and
         		p.pro_codprod = psl_codprod and
-        		pro_codprod = '".$codigo."' and
+        		pro_codprod = '".$p."' and
         		pre_rangoinicial = '1' and
-        		pre_codlista='".$local."' and
+        		pre_codlista='1' and
         		psl_saldo != '0' and
-        		psl_codbodega = '1'
-            limit 9,
-			order by pro_codprod asc ");
-
+        		psl_codbodega = '1' ");
 			return $result_set->result_array();
         }
+
+        //LISTA RANGO DE PRECIO DE UN PRODUCTO EN ESPESIFICO
+        public function rangos($cod){
+          $result_set = $this->db->query(
+            "select
+            round(pre_rangoinicial) as ri,
+            round(pre_rangofinal) as rf
+            from sto_precios
+            where
+              pre_codprod = '".$cod."'
+            and
+              pre_codlista ='1'");
+
+          return $result_set -> result_array();
+         }
 
         //LISTADO POR PRODUCTOS MAS VENDIDOS
         //TODO FALTA FILTRAR

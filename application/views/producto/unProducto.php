@@ -104,7 +104,8 @@ thubs*/
   margin-right:10px
 }
 .rangos{
-    text-align:center;;
+    text-align:center;
+		padding-bottom: 10px;
 }
 .rangos h5{
   color:#545454;
@@ -136,11 +137,25 @@ thubs*/
     <div class="content-wrapper">
 		<div class="item-container">
 			<div class="container">
-
+					<?php foreach ($producto as $p) { ?>
+				  <!-- IMAGENES  -->
+					<?php
+					$file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$p['pro_codprod']. '.jpg';
+	        $file_headers = @get_headers($file);
+					?>
+					<!-- PRINCIPAL -->
 					<div class="product col-md-3 service-image-left">
-							<img id="item-display" src="<?php echo site_url('img/producto/producto4.jpg');?>" alt=""></img>
+						<?php
+						if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+						?>
+							<img  src="<?php echo site_url('img/nodisponible.jpg');?>"/><!--Img -->
+						<?php
+						}else{
+						?>
+							<img  src="http://www.libreriagiorgio.cl/lg/imagenes/codigos/<?php echo $p['pro_codprod'] ?>.jpg"/><!--Img -->
+						<?php } ?>
 					</div>
-
+					<!-- SEGUNDARIAS	 -->
 					<div class="container service1-items col-sm-3 col-md-3 pull-left">
 
 							<a id="item-1" class="service1-item">
@@ -155,30 +170,46 @@ thubs*/
 
 					</div>
 
-
+				<!-- INFO PRODUCTO -->
+				<?php echo form_open('index.php/Unproducto/agregar');?>
 				<div class="col-md-6">
-					<div class="nombre">Nombre</div>
+					<div class="nombre"><?php echo $p['pro_desc'] ?></div>
         <div class="row">
-          <div class="rangos col-md-6">
-            <h3>Rangos</h3>
-            <h4>Desde hasta</h4>
-            <h5>11111</h5>
-            <h4>Desde hasta</h4>
-            <h5>11112</h5>
-            <h4>Desde hasta</h4>
-            <h5>11113</h5>
+          <div class="rangos col-md-12">
+						<table>
+								<caption>Precio mayorista</caption>
+								<thead>
+										<tr>
+											<?php foreach ($rango as $r) {
+													if (is_null($r['rf'])) {  ?>
+															<th data-field="cant">Desde :<?php echo $r['rf']?> o mas</th>
+													<?php } else { ?>
+															<th data-field="cant">Desde :<?php echo $r['ri']?></th>
+															<th data-field="cant">Hasta :<?php echo $r['rf']?></th>
+											<?php }
+											}?>
+										</tr>
+								</thead>
+						</table>
           </div>
-          <div class="form col-md-6">
-					<div class="precio">Precio</div>
+          <div class="form col-md-12">
+					<div class="precio">Precio: $<?php echo number_format($p['precio'],'0',',','.')?></div>
 					<div class="diponibilidad">Si o no stock</div>
           <div class="btnAgregar">
-            <button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-shopping-cart"></span> Agregar
-            </button>
+
+							<?php echo form_submit('action','Agregar al carro'); ?>
+
           </div>
+
         </div>
         </div>
 				</div>
+				<?php echo form_hidden('id', $p['pro_codprod']); ?>
+				<?php echo form_hidden('name', $p['pro_desc']); ?>
+				<?php echo form_hidden('price', $p['precio']); ?>
+
+				<?php echo form_close(); ?>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

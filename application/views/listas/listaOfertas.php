@@ -12,7 +12,7 @@
 	        $file_headers = @get_headers($file); ?>
 	      <li class="col-lg-3 col-md-4 col-sm-6">
 	        <div class="producto">
-	          <a href="">
+	          <a href="<?php echo site_url('index.php/Unproducto?codigo='.urlencode($o['pro_codprod']).'')?>">
 	            <div class="producto-imagen">
 								<i></i>
 	              <?php
