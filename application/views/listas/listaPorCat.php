@@ -100,11 +100,84 @@
 .contenedor-producto{
 	margin-top:20px
 }
+
+
+/* PAGINACION*/
+#pagination{
+margin: 40 40 0;
+}
+
+#pagination2{
+margin: 40 40 0;
+}
+
+ul.tsc_pagination li a
+{
+border:solid 1px;
+border-radius:3px;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+padding:6px 9px 6px 9px;
+}
+ul.tsc_pagination li
+{
+padding-bottom:1px;
+}
+ul.tsc_pagination li a:hover,
+ul.tsc_pagination li a.current
+{
+color:#FFFFFF;
+box-shadow:0px 1px #EDEDED;
+-moz-box-shadow:0px 1px #EDEDED;
+-webkit-box-shadow:0px 1px #EDEDED;
+}
+ul.tsc_pagination
+{
+margin:4px 0;
+padding:0px;
+height:100%;
+overflow:hidden;
+font:12px 'Tahoma';
+list-style-type:none;
+}
+ul.tsc_pagination li
+{
+float:left;;
+margin:0px;
+padding:0px;
+margin-left:5px;
+}
+ul.tsc_pagination li a
+{
+color:black;
+display:inline;
+text-decoration:none;
+padding:7px 10px 7px 10px;
+}
+ul.tsc_pagination li a img
+{
+border:none;
+}
+ul.tsc_pagination li a
+{
+color:#0A7EC5;
+border-color:#8DC5E6;
+background:#F8FCFF;
+}
+ul.tsc_pagination li a:hover,
+ul.tsc_pagination li a.current
+{
+text-shadow:0px 1px #388DBE;
+border-color:#3390CA;
+background:#58B0E7;
+background:-moz-linear-gradient(top, #B4F6FF 1px, #63D0FE 1px, #58B0E7);
+background:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0.02, #B4F6FF), color-stop(0.02, #63D0FE), color-stop(1, #58B0E7));
+}
 </style>
 
 <?php
 if (count($pXcat) == 0) {
-	echo '<br>No hay productos en esta catergoria';
+	echo '<br>No hay productos diponobles en esta catergoria';
 }else{
 	//echo '<pre>'; var_dump($pXcat); echo '</pre>';
 	?>
@@ -112,10 +185,14 @@ if (count($pXcat) == 0) {
 <!--Lista de productos-->
 <div class="lista-todos-productos">
   <div class="title container">
-    <h1>Novedades</h1>
+    <h1><?php echo $pXcat[0]['grupo'];?></h1>
   </div>
   <div class="contenedor-producto container">
 	    <ul class="lista-productos">
+
+
+
+				<?php //echo '<pre>'; print_r($pXcat); echo '</pre>';?>
 	      <?php foreach ($pXcat as $n){
 					echo form_open('index.php/Listas/agregar');
 	        $file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$n['pro_codprod']. '.jpg';
@@ -155,7 +232,7 @@ if (count($pXcat) == 0) {
 	      </li>
 				<?php echo form_hidden('id', $n['pro_codprod']); ?>
 				<?php echo form_hidden('name', $n['pro_desc']); ?>
-				<?php echo form_hidden('price', $n['precio']); ?> 
+				<?php echo form_hidden('price', $n['precio']); ?>
 
 				<?php echo form_close(); ?>
 		 <?php }?>
@@ -172,3 +249,4 @@ if (count($pXcat) == 0) {
 <?php foreach ($links as $link) {
 echo "<li>". $link."</li>";
 } ?>
+</div>

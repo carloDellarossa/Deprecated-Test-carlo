@@ -18,19 +18,45 @@ public function verPorCat(){
 	$this->load->model('Producto');
 
 	//paginacion
-	$p = $_GET["cat"];
-	$str = str_replace('%20',' ',$p);
+
 	$config = array();
-	$config["base_url"] = base_url() . "index.php/Listas/verPorCat?cat=$str";
-	$total_row = $this->Producto->record_count($p);
+	$config['enable_query_strings'] = True;
+	$config['page_query_string'] =true;
+
+	$limite = 40;
+	$config["per_page"] = $limite;
+
+
+	$pagina = $_GET['per_page'];
+	if(intval($pagina) == 1){
+		$offset = 0 * $limite;
+	}else{
+		$offset = intval($pagina) * $limite;
+	}
+
+	$grupo = $_GET["cat"];
+	if(isset($_GET["subcat"])){
+		$subGrupo = $_GET["subcat"];
+		$data1['pXcat'] = $this->Producto->listaPorCat($limite,$offset,$grupo,$subGrupo);
+		$total_row = $this->Producto->record_count($subGrupo,'subgrupo');
+		$config["base_url"] = base_url() . "index.php/Listas/verPorCat";
+		$config['first_url'] = "?cat=$grupo&subcat=$subGrupo&per_page=1";
+	}else{
+		$data1['pXcat'] = $this->Producto->listaPorCat($limite,$offset,$grupo);
+			$total_row = $this->Producto->record_count($grupo,'grupo');
+			$config["base_url"] = base_url() . "index.php/Listas/verPorCat";
+			$config['first_url'] = "?cat=$grupo&per_page=1";
+	}
+	$config['last_link'] = FALSE;
 	$config["total_rows"] = $total_row;
-	$config["per_page"] = 5;
-	$config['use_page_numbers'] = TRUE;
 	$config['num_links'] = $total_row;
+	$config['use_page_numbers'] = TRUE;
+	$config['reuse_query_string'] = True;
 	$config['cur_tag_open'] = '&nbsp;<a class="current">';
 	$config['cur_tag_close'] = '</a>';
 	$config['next_link'] = 'Next';
 	$config['prev_link'] = 'Previous';
+	$config['$first_url'] = '';
 
 	$this->pagination->initialize($config);
 	if($this->uri->segment(3)){
@@ -40,8 +66,15 @@ public function verPorCat(){
 	$page = 1;
 	}
 
-		//query a db
-		$data1['pXcat'] = $this->Producto->listaPorCat($p);
+		// //query a db
+		// if(isset($_GET["subcat"])){
+		// 	$subGrupo = $_GET["subcat"];
+		// 	$data1['pXcat'] = $this->Producto->listaPorCat($grupo,$subGrupo);
+		// }else{
+		// 	$data1['pXcat'] = $this->Producto->listaPorCat($grupo);
+		//
+		// }
+
 		$str_links = $this->pagination->create_links();
 		$data1["links"] = explode('&nbsp;',$str_links );
 

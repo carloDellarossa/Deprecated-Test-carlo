@@ -8,9 +8,9 @@ class Producto extends CI_Model {
                 $local = "1";
         }
 
-
-
-        //Obtener local
+        //OBTENER local
+        //TODO REVISAR LISTAS DE PRECIO
+        //
         public function setLocal($l){
         	if (isset($l)) {
         		$local = $l;
@@ -20,7 +20,7 @@ class Producto extends CI_Model {
         	return $local;
         }
 
-        //Obtener datos producto $p codigo
+        //LISTAR PRODUCTO ESPESIFICO
         public function producto($p){
 
         	$local = '1'; // por ahora 1 seria tienda default
@@ -57,38 +57,13 @@ class Producto extends CI_Model {
         		psl_codbodega = '1'
             limit 9,
 			order by pro_codprod asc ");
+
 			return $result_set->result_array();
         }
 
-        //Obtener cantidad
-
-        //Obtener precio variable
-
-        //Obtener rangos
-
-        //lista de productos
-        public function testFotos(){
-          $result_set = $this->db->query(
-          "select
-DISTINCT
-        g.aap_texto as grupo,sg.aap_texto as subgrupo,sg1.aap_texto as subgrupo1,sg2.aap_texto as subgrupo2
-from sto_producto
-left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
-left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
-left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
-left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
-left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
-left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
-left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
-order by grupo, subgrupo, subgrupo1,subgrupo2");
-          return $result_set->result_array();
-        }
-
-        public function add($c){
-          $result_set = $this->db->query(
-          "update producto set tienefoto = FALSE where codigo = '".$c."'");
-        }
-
+        //LISTADO POR PRODUCTOS MAS VENDIDOS
+        //TODO FALTA FILTRAR
+        //
         public function listaProductos(){
         	$result_set = $this->db->query(
         	"select
@@ -115,11 +90,11 @@ order by grupo, subgrupo, subgrupo1,subgrupo2");
         		psl_codbodega = '1'
 
 			order by pro_codprod asc
-        limit 9");
+        limit 8");
 			return $result_set->result_array();
         }
 
-        //falta filtrar por oferta
+        //LISTADO POR OFERTAS
         public function listaOfertas(){
         	$result_set = $this->db->query(
         	"select
@@ -129,23 +104,30 @@ order by grupo, subgrupo, subgrupo1,subgrupo2");
 				pro_imgdefecto,
 				pro_oferta,
 				pro_novedad,
-			    round(pre_rangoinicial) as ri,
-			    case when pre_rangofinal is null then 999999 else round(pre_rangofinal) end as rf,
-			    round(((100-pre_maxdesctorecargo)/100)*pre_precio) as precio
-			from
-				sto_precios r ,
-				sto_producto p
-			where
-			    r.pre_codprod = p.pro_codprod and
-			    pre_rangoinicial = '1' and
-			    pre_codlista='1' and
-			    pro_invmax != '0' --esto se modificaria a futuro para revisar el stock
-			order by pre_correlativo asc
+			    round(r.pre_rangoinicial) as ri,
+			    case when r.pre_rangofinal is null then 999999 else round(r.pre_rangofinal) end as rf,
+			    round(((100-r.pre_maxdesctorecargo)/100)*r.pre_precio) as precio
+          from
+    				sto_precios r ,
+    				sto_producto p
+            left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
+            left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
+            left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
+            left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
+            left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
+            left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
+            left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+    			where
+             (psl_saldo > 1 and pro_vigencia = 'S') and
+    			    r.pre_codprod = p.pro_codprod and
+    			    r.pre_rangoinicial = '1' and
+    			    r.pre_codlista='1'
+			order by r.pre_maxdesctorecargo DESC
 			limit 4");
 			return $result_set->result_array();
         }
 
-        //falta filtrar por novedades
+        //LISTADO POR NOVEDADES
         public function listaNovedades(){
         	$result_set = $this->db->query(
         	"select
@@ -155,38 +137,43 @@ order by grupo, subgrupo, subgrupo1,subgrupo2");
 				pro_imgdefecto,
 				pro_oferta,
 				pro_novedad,
-			    round(pre_rangoinicial) as ri,
-			    case when pre_rangofinal is null then 999999 else round(pre_rangofinal) end as rf,
-			    round(((100-pre_maxdesctorecargo)/100)*pre_precio) as precio
+			    round(r.pre_rangoinicial) as ri,
+			    case when r.pre_rangofinal is null then 999999 else round(r.pre_rangofinal) end as rf,
+			    round(((100-r.pre_maxdesctorecargo)/100)*r.pre_precio) as precio
 			from
 				sto_precios r ,
 				sto_producto p
+        left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
+        left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
+        left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
+        left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
+        left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
+        left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
+        left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
 			where
+         (psl_saldo > 1 and pro_vigencia = 'S') and
 			    r.pre_codprod = p.pro_codprod and
-			    pre_rangoinicial = '1' and
-			    pre_codlista='1' and
-			    pro_invmax != '0' --esto se modificaria a futuro para revisar el stock
-			order by pre_correlativo asc
+			    r.pre_rangoinicial = '1' and
+			    r.pre_codlista='1'
+			order by p.feccreacion DESC
 			limit 4");
 			return $result_set->result_array();
         }
 
-        public function listaPorCat($p,$t=FALSE){
-          if ($t) {
-            $char = '/';
-            $r = $p .$char. $t;
+        //LISTADO POR CATEGORIAS
+        public function listaPorCat($limite,$offset,$grupo,$subGrupo=FALSE){
+          if($subGrupo == FALSE){
+            $objtivo = 'g.aap_texto';
+            $cat = $grupo ;
           }else{
-            $r = $p;
+            $objtivo = 'sg.aap_texto';
+            $cat = $subGrupo;
           }
-
-          $str = str_replace('%20',' ',$r);
-
-
-        	$result_set = $this->db->query(
-        	"select
+          $result_set = $this->db->query(
+          "select
               pro_codprod,
-      			  pro_desc,
-      			  pro_glosa,
+              pro_desc,
+              pro_glosa,
               m.aap_texto as marca,g.aap_texto as grupo,sg.aap_texto as subgrupo,sg1.aap_texto as subgrupo1,sg2.aap_texto as subgrupo2,pro_vigencia as vigencia,
             case
                   --when (puc.precio is not null and puc.precio >1) then puc.precio
@@ -209,64 +196,57 @@ order by grupo, subgrupo, subgrupo1,subgrupo2");
             left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
             left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
             left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
-           where (psl_saldo > 5 and pro_vigencia = 'S')
+           where (psl_saldo > 1 and pro_vigencia = 'S')
            and
-           g.aap_texto SIMILAR TO '". $str ."'
+           ".$objtivo." SIMILAR TO '". $cat ."'
+            order by pro_desc limit ".$limite." offset ".$offset."  ");
 
-           OR
+			         return $result_set->result_array();
 
-           sg.aap_texto SIMILAR TO'". $str ."'
-          order by pro_desc");
-			return $result_set->result_array();
         }
 
-        public function record_count($p){
-$str = str_replace('%20',' ',$p);
-return $this->db->count_all("sto_producto
-  left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
-  left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
-  left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
-  left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
-  left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
-  left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
-  left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
- where (psl_saldo > 5 and pro_vigencia = 'S')
- and
- g.aap_texto SIMILAR TO '". $str ."'
+        //CONTAR ROWS PARA PAGINACION
+        public function record_count($valor,$cat){
+          if($cat=='grupo'){
+            $objtivo = 'g.aap_texto';
+          }else if ($cat == 'subgrupo'){
+            $objtivo = 'sg.aap_texto';
+          }
+          return $this->db->count_all("sto_producto
+            left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
+            left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
+            left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
+            left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
+            left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
+            left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
+            left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+           where (psl_saldo > 5 and pro_vigencia = 'S')
+           and
+           ".$objtivo." Similar TO '". $valor ."' ");
+          }
 
- OR
+          //TESTING
+          public function testFotos(){
+            $result_set = $this->db->query(
+            "select
+              DISTINCT
+                      g.aap_texto as grupo,sg.aap_texto as subgrupo,sg1.aap_texto as subgrupo1,sg2.aap_texto as subgrupo2
+              from sto_producto
+              left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
+              left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
+              left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
+              left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
+              left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
+              left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
+              left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+            order by grupo, subgrupo, subgrupo1,subgrupo2");
+            return $result_set->result_array();
+          }
 
- sg.aap_texto SIMILAR TO'". $str ."'
- ");
+          public function add($c){
+            $result_set = $this->db->query(
+            "update producto set tienefoto = FALSE where codigo = '".$c."'");
+          }
+
+
 }
-
-}
-//and sg.aap_texto = '". $p ."'
-//and
-//   g.aap_texto LIKE '". $cat[1] ."' or
-//   sg.aap_texto LIKE '". $cat[2] ."'
-
-
-
-//con saldo
-
-// select
-// 	pro_codprod,
-// 	pro_desc,
-// 	pro_glosa,
-// 	pro_imgdefecto,
-// 	pro_oferta,
-// 	pro_novedad,
-// 	round(psl_saldo) as saldo,
-//         round(pre_rangoinicial) as ri,
-//         case when pre_rangofinal is null then 999999 else round(pre_rangofinal) end as rf,
-//         round(((100-pre_maxdesctorecargo)/100)*pre_precio) as precio
-// 		from sto_precios r , sto_producto p , sto_prodsal
-// 		where
-//         r.pre_codprod = p.pro_codprod and
-//         p.pro_codprod = psl_codprod and
-//         pre_rangoinicial = '1' and
-//         pre_codlista='1' and
-//         psl_saldo != '0' and
-//         psl_codbodega = '1'
-// 	order by pro_codprod asc

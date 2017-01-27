@@ -7,6 +7,10 @@
   padding: 4px;
 }
 .navbar-cat .navbar-brand {
+  padding-top: 6px;
+padding-left: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
   color: #000000;
 }
 .navbar-cat .navbar-brand:hover,
@@ -106,7 +110,7 @@ carro de compra */
 
 .lista-productos-carro{
 	margin-left:-10px;
-	min-height:100vh;
+	min-height: 88vh;
   max-width : 252px
 }
 .lista-productos-carro li{
@@ -803,7 +807,7 @@ carro de compra */
 				    <span class="icon-bar"></span>
 				</button>
 		      	<!-- Icono marca link a Inicio -->
-		    	<a class="navbar-brand" href="Inicio"><img class="" alt="Brand" src="<?php echo site_url('img/logo.png');?>" align="top"></a>
+		    	<a class="navbar-brand" href="<?php echo site_url('index.php/Inicio'); ?>"><img class="" alt="Brand" src="<?php echo site_url('img/logo.png');?>" align="top" style="padding-bottom:5px"></a>
 		      <ul class="nav navbar-nav navbar-left" >
 			        <!--Menu Categorias -->
               <?php
@@ -818,12 +822,12 @@ carro de compra */
                     ?>
                             <li class="dropdown-submenu">
 
-                              <a class="dropdown-toggle"><?php echo anchor('index.php/Listas/verPorCat?cat='.urlencode($key),''.$key.'','class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"'); ?></a>
+                              <a class="dropdown-toggle"><?php echo anchor('index.php/Listas/verPorCat?cat='.urlencode($key).'&per_page=1',''.$key.'','class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"'); ?></a>
                                 <ul class="dropdown-menu scrollable-menu">
                                 <?php
                                 foreach ($value as $s => $p) { ?>
-
-                                    <li><a href="<?php echo site_url('index.php/Listas/verPorCat?cat='.urlencode($p).'') ?>"><?php echo $p;?></a></li>
+                                                                      <!-- index.php/Listas/verPorCat?cat='.urlencode($key).'&subcat='.urlencode($p).''                           -->
+                                    <li><a href="<?php echo site_url('index.php/Listas/verPorCat?cat='.urlencode($key).'&subcat='.urlencode($p).'&per_page=1') ?>"><?php echo $p;?></a></li>
 
                                 <?php
                                 }
