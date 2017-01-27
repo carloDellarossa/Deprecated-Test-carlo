@@ -111,7 +111,7 @@ carro de compra */
 .lista-productos-carro{
 	margin-left:-10px;
 	min-height: 88vh;
-  max-width : 252px
+  max-width : 252px;
 }
 .lista-productos-carro li{
 	list-style:none;
@@ -124,7 +124,7 @@ carro de compra */
 	display:block
 }
  .lista-productos-carro li a:hover{
-	text-decoration:none
+	text-decoration:none;
 }
 .lista-carro .producto-carro{
 	position:relative;
@@ -849,7 +849,7 @@ carro de compra */
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;<span class="badge"><?php echo $this->cart->total_items(); ?></span>
             </a>
-              <ul class="dropdown-menu animated slideInRight lista-productos-carro scroll" >
+              <ul class="dropdown-menu animated slideInRight lista-productos-carro scroll" style="margin-top : 5px" >
                 <div class="lista-carro" >
                   <div class="contenedor-producto-carro container">
                   <?php
