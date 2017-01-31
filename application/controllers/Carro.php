@@ -12,7 +12,9 @@ class Carro extends CI_Controller {
 
 		$this->load->view('sitio/header');
 		$this->load->view('menu/top');
-		$this->load->view('menu/cat');
+    $this->load->model('Categorias');
+    $data4['categorias'] = $this->Categorias->catArray();
+    $this->load->view('menu/cat',$data4);
 
 		//carro por ahora
 		$this->load->view('carro/carro');

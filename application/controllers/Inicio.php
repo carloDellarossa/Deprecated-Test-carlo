@@ -11,14 +11,16 @@ class Inicio extends CI_Controller {
 		//models
 			//producto
 			$this->load->model('Producto');
+			$this->load->model('Categorias');
 			$data1['productosL'] = $this->Producto->listaProductos();
 			$data2['productosO'] = $this->Producto->listaOfertas();
 			$data3['productosN'] = $this->Producto->listaNovedades();
+			$data4['categorias'] = $this->Categorias->catArray();
 		//falta si $local no esta setiado volver a aleguir tienda o definir si va a exitir una por default
 
 		$this->load->view('sitio/header');
 		$this->load->view('menu/top');
-		$this->load->view('menu/cat');
+		$this->load->view('menu/cat',$data4);
 		$this->load->view('sitio/banner');
 		$this->load->view('listas/listaProductos',$data1);
 		$this->load->view('listas/listaOfertas',$data2);

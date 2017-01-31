@@ -5,7 +5,6 @@ class Tienda extends CI_Controller {
 
 	public function index()
 	{	
-
 		$this->load->view('sitio/header');
 		$this->load->model('Producto');
 		$this->load->view('tiendas');

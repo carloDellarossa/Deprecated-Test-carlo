@@ -46,7 +46,7 @@ class Producto extends CI_Model {
         		p.pro_codprod = psl_codprod and
         		pro_codprod = '".$p."' and
         		pre_rangoinicial = '1' and
-        		pre_codlista='1' and
+        		pre_codlista='10' and
         		psl_saldo != '0' and
         		psl_codbodega = '1' ");
 			return $result_set->result_array();
@@ -56,13 +56,14 @@ class Producto extends CI_Model {
         public function rangos($cod){
           $result_set = $this->db->query(
             "select
-            round(pre_rangoinicial) as ri,
-            round(pre_rangofinal) as rf
-            from sto_precios
+              round(pre_rangoinicial) as ri,
+              case when pre_rangofinal is null then 999999 else round(pre_rangofinal) end as rf,
+              round(((100-pre_maxdesctorecargo)/100)*pre_precio) as precio
+              from sto_precios
             where
               pre_codprod = '".$cod."'
             and
-              pre_codlista ='1'");
+              pre_codlista ='10'");
 
           return $result_set -> result_array();
          }
@@ -182,18 +183,17 @@ class Producto extends CI_Model {
               pro_glosa,
               m.aap_texto as marca,g.aap_texto as grupo,sg.aap_texto as subgrupo,sg1.aap_texto as subgrupo1,sg2.aap_texto as subgrupo2,pro_vigencia as vigencia,
             case
-                  --when (puc.precio is not null and puc.precio >1) then puc.precio
-                  when (pro_costoventa is not null and pro_costoventa>0) then round(pro_costoventa)
-                  when (pro_costoventa is null or pro_costoventa=0) and (pro_costo is not null AND pro_costo<>0) then round(pro_costo)
-                  when (pro_costoventa is null or pro_costoventa=0) and pro_costoestandar is not null then round(pro_costoestandar)
-                  else 0 end as costo,
-
-                  case when psl_saldo is null then 0 else round(psl_saldo) end as saldo,
-                  case when pre.pre_precio is null then 1 else
-                  round((pre.pre_precio * ((100::numeric - pre.pre_maxdesctorecargo) / 100::numeric)/1.19), 0) end as l10,
-                  round(pre_rangoinicial) as ri,
-                  case when pre_rangofinal is null then 999999 else round(pre_rangofinal) end as rf,
-                  round(((100-pre_maxdesctorecargo)/100)*pre_precio) as precio
+              --when (puc.precio is not null and puc.precio >1) then puc.precio
+              when (pro_costoventa is not null and pro_costoventa>0) then round(pro_costoventa)
+              when (pro_costoventa is null or pro_costoventa=0) and (pro_costo is not null AND pro_costo<>0) then round(pro_costo)
+              when (pro_costoventa is null or pro_costoventa=0) and pro_costoestandar is not null then round(pro_costoestandar)
+              else 0 end as costo,
+              case when psl_saldo is null then 0 else round(psl_saldo) end as saldo,
+              case when pre.pre_precio is null then 1 else
+              round((pre.pre_precio * ((100::numeric - pre.pre_maxdesctorecargo) / 100::numeric)/1.19), 0) end as l10,
+              round(pre_rangoinicial) as ri,
+              case when pre_rangofinal is null then 999999 else round(pre_rangofinal) end as rf,
+              round(((100-pre_maxdesctorecargo)/100)*pre_precio) as precio
           from sto_producto
             left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
             left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
@@ -252,6 +252,28 @@ class Producto extends CI_Model {
           public function add($c){
             $result_set = $this->db->query(
             "update producto set tienefoto = FALSE where codigo = '".$c."'");
+          }
+
+          public function filtros(){
+            $result_set = $this->db->query(
+            "select distinct
+
+        m.aap_texto as marca,g.aap_texto as grupo,sg.aap_texto as subgrupo,sg1.aap_texto as subgrupo1,sg2.aap_texto as subgrupo2
+
+from sto_producto
+left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
+left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
+left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
+left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
+left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
+left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
+left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+where
+g.aap_texto = 'ESCOLAR' and
+sg.aap_texto = 'Goma EVA'");
+
+                 return $result_set->result_array();
+
           }
 
 

@@ -98,7 +98,8 @@
 	background-color:#999
 }
 .contenedor-producto{
-	margin-top:20px
+	margin-top:20px;
+	max-width: inherit;
 }
 
 
@@ -197,7 +198,7 @@ if (count($pXcat) == 0) {
 					echo form_open('index.php/Listas/agregar');
 	        $file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$n['pro_codprod']. '.jpg';
 	        $file_headers = @get_headers($file); ?>
-	      <li class="col-lg-3 col-md-4 col-sm-6">
+	      <li class="col-lg-3 col-md-3 col-sm-6">
 	        <div class="producto">
 	          <a href="<?php echo site_url('index.php/Unproducto?codigo='.urlencode($n['pro_codprod']).'')?>" >
 	            <div class="producto-imagen">

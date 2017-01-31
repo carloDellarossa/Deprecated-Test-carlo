@@ -1,4 +1,105 @@
 <style>
+.lista-todos-productos{
+	margin-top:20px;
+	margin-bottom:40px;
+	font-size:13px
+}
+.lista-todos-productos .title{
+	position:relative;
+}
+.lista-todos-productos .title h1{
+	font-size:20px;
+	line-height:50px;
+	text-align: center;
+	margin-bottom:0
+}
+.lista-todos-productos .lista-productos{
+	margin-left:-10px;
+	min-height:200px
+}
+.lista-todos-productos .lista-productos li{
+	list-style:none;padding:0 0 20px 10px;
+	margin-left:0;
+	float:left
+}
+.lista-todos-productos .lista-productos li a{
+	color:#333;
+	display:block
+}
+.lista-todos-productos .lista-productos li a:hover{
+	text-decoration:none
+}
+.lista-todos-productos .producto{
+	position:relative;padding:0 10px;
+	border:1px solid transparent;
+	background-color:#fff
+}
+.lista-todos-productos .producto:hover{
+	box-shadow:0 3px 6px 0 rgba(51,51,51,.298039)
+}
+.lista-todos-productos .producto-imagen{
+	padding-top:10px;
+	text-align:center;
+	min-width:210px;
+	height:220px;
+	overflow:hidden
+}
+.lista-todos-productos .producto-imagen i{
+	content:'';
+	display:inline-block;
+	height:100%;
+	vertical-align:middle;
+	width:0;
+	font-size:0;
+	overflow:hidden
+}
+.lista-todos-productos .producto-imagen img{
+	display:inline-block;
+	vertical-align:middle;
+	max-width:210px;
+	max-height:210px
+}
+.lista-todos-productos .producto-info{
+	position:relative;
+	height:100px;
+	padding-top:5px
+}
+.lista-todos-productos .nombre{
+	position:absolute;
+	right:0;
+	/*top:28px;*/
+	line-height:20px;
+	font-size:10px;
+}
+.lista-todos-productos .precio{
+	text-align:center;
+	display:block;
+	color:#545454;
+	font-weight:700;
+	font-size:18px;
+	margin-right:10px
+}
+.lista-todos-productos .btnAgregar{
+	text-align:center;
+	padding-top:10px
+}
+.lista-todos-productos .btnAgregar a{
+	visibility:hidden;
+	font-size:16px;
+	background-color:#666;
+	padding:0 80px;
+	line-height:50px;
+	display:inline-block;
+	color:#fff;
+	border-radius:4px
+}
+.lista-todos-productos .btnAgregar a:hover{
+	text-decoration:none;
+	background-color:#999
+}
+.contenedor-producto{
+	margin-top:20px
+}
 /*
 foto principal*/
 .product{
@@ -25,7 +126,7 @@ limites del container */
 }
 
 .container-fluid{
-	max-width: 1140px;
+	
 	margin: 0 auto;
 }
 
@@ -132,84 +233,94 @@ thubs*/
 	background-color:#999
 }
 </style>
+<div class="lista-un-producto">
+	<div class="container">
+	    <div class="content-wrapper">
+			<div class="item-container">
+				<div class="container">
+						<?php foreach ($producto as $p) { ?>
 
-<div class="container">
-    <div class="content-wrapper">
-		<div class="item-container">
-			<div class="container">
-					<?php foreach ($producto as $p) { ?>
-				  <!-- IMAGENES  -->
-					<?php
-					$file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$p['pro_codprod']. '.jpg';
-	        $file_headers = @get_headers($file);
-					?>
-					<!-- PRINCIPAL -->
-					<div class="product col-md-3 service-image-left">
+					  <!-- IMAGENES  -->
 						<?php
-						if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+						$file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$p['pro_codprod']. '.jpg';
+		        $file_headers = @get_headers($file);
 						?>
-							<img  src="<?php echo site_url('img/nodisponible.jpg');?>"/><!--Img -->
-						<?php
-						}else{
-						?>
-							<img  src="http://www.libreriagiorgio.cl/lg/imagenes/codigos/<?php echo $p['pro_codprod'] ?>.jpg"/><!--Img -->
-						<?php } ?>
+						<!-- PRINCIPAL -->
+						<div class="product col-md-3 service-image-left">
+							<?php
+							if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+							?>
+								<img  src="<?php echo site_url('img/nodisponible.jpg');?>"/><!--Img -->
+							<?php
+							}else{
+							?>
+								<img  src="http://www.libreriagiorgio.cl/lg/imagenes/codigos/<?php echo $p['pro_codprod'] ?>.jpg"/><!--Img -->
+							<?php } ?>
+						</div>
+						<!-- SEGUNDARIAS	 -->
+						<div class="container service1-items col-sm-3 col-md-3 pull-left">
+
+								<a id="item-1" class="service1-item">
+									<img src="<?php echo site_url('img/producto/producto1.jpg');?>" alt=""></img>
+								</a>
+								<a id="item-2" class="service1-item">
+									<img src="<?php echo site_url('img/producto/producto2.jpg');?>" alt=""></img>
+								</a>
+								<a id="item-3" class="service1-item">
+									<img src="<?php echo site_url('img/producto/producto3.jpg');?>" alt=""></img>
+								</a>
+
+						</div>
+
+					<!-- INFO PRODUCTO -->
+					<?php echo form_open('index.php/Unproducto/agregar');?>
+					<div class="col-md-6">
+						<div class="nombre"><?php echo $p['pro_desc'] ?></div>
+	        <div class="row">
+	          <div class="rangos col-md-12">
+							<table>
+									<caption>Precio mayorista</caption>
+
+												<?php foreach ($rango as $r) {?>
+													<tr>
+																<th data-field="cant">De :</th>
+																<td><?php echo $r['ri']?></td>
+																<?php if (!isset($r['rf'])) { ?>
+																	<th data-field="cant">O :</th>
+																	<td><?php echo $r['rf']?></td>
+																	<th data-field="cant">Precio :</th>
+																	<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
+																<?php }else{?>
+																<th data-field="cant">A :</th>
+																<td><?php echo $r['rf']?></td>
+																<th data-field="cant">Precio :</th>
+																<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
+																<?php } ?>
+													</tr>
+												<?php
+												}?>
+
+
+							</table>
+	          </div>
+		        <div class="form col-md-12">
+							<div class="precio">Precio: $<?php echo number_format($p['precio'],'0',',','.')?></div>
+							<div class="diponibilidad">Si o no stock</div>
+		          <div class="btnAgregar">
+
+									<?php echo form_submit('action','Agregar al carro'); ?>
+
+		          </div>
+						</div>
+	        </div>
 					</div>
-					<!-- SEGUNDARIAS	 -->
-					<div class="container service1-items col-sm-3 col-md-3 pull-left">
+					<?php echo form_hidden('id', $p['pro_codprod']); ?>
+					<?php echo form_hidden('name', $p['pro_desc']); ?>
+					<?php echo form_hidden('price', $p['precio']); ?>
 
-							<a id="item-1" class="service1-item">
-								<img src="<?php echo site_url('img/producto/producto1.jpg');?>" alt=""></img>
-							</a>
-							<a id="item-2" class="service1-item">
-								<img src="<?php echo site_url('img/producto/producto2.jpg');?>" alt=""></img>
-							</a>
-							<a id="item-3" class="service1-item">
-								<img src="<?php echo site_url('img/producto/producto3.jpg');?>" alt=""></img>
-							</a>
-
-					</div>
-
-				<!-- INFO PRODUCTO -->
-				<?php echo form_open('index.php/Unproducto/agregar');?>
-				<div class="col-md-6">
-					<div class="nombre"><?php echo $p['pro_desc'] ?></div>
-        <div class="row">
-          <div class="rangos col-md-12">
-						<table>
-								<caption>Precio mayorista</caption>
-								<thead>
-										<tr>
-											<?php foreach ($rango as $r) {
-													if (is_null($r['rf'])) {  ?>
-															<th data-field="cant">Desde :<?php echo $r['rf']?> o mas</th>
-													<?php } else { ?>
-															<th data-field="cant">Desde :<?php echo $r['ri']?></th>
-															<th data-field="cant">Hasta :<?php echo $r['rf']?></th>
-											<?php }
-											}?>
-										</tr>
-								</thead>
-						</table>
-          </div>
-          <div class="form col-md-12">
-					<div class="precio">Precio: $<?php echo number_format($p['precio'],'0',',','.')?></div>
-					<div class="diponibilidad">Si o no stock</div>
-          <div class="btnAgregar">
-
-							<?php echo form_submit('action','Agregar al carro'); ?>
-
-          </div>
-
-        </div>
-        </div>
+					<?php echo form_close(); ?>
+					<?php } ?>
 				</div>
-				<?php echo form_hidden('id', $p['pro_codprod']); ?>
-				<?php echo form_hidden('name', $p['pro_desc']); ?>
-				<?php echo form_hidden('price', $p['precio']); ?>
-
-				<?php echo form_close(); ?>
-				<?php } ?>
 			</div>
 		</div>
 	</div>

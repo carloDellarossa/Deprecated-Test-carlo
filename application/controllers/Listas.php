@@ -82,7 +82,9 @@ public function verPorCat(){
 		//maqueta top
 	$this->load->view('sitio/header');
 	$this->load->view('menu/top');
-	$this->load->view('menu/cat');
+	$this->load->model('Categorias');
+$data4['categorias'] = $this->Categorias->catArray();
+$this->load->view('menu/cat',$data4);
 		//contenido
 	$this->load->view('listas/listaPorCat',$data1);
 		//maqueta btm
