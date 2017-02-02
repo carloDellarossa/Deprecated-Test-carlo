@@ -307,11 +307,11 @@ carro de compra */
                     ?>
                             <li class="dropdown-submenu">
 
-                              <a class="dropdown-toggle"><?php echo anchor('index.php/Listas/verPorCat?cat='.urlencode($key).'&per_page=1',''.$key.'','class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"'); ?></a>
+                              <?php echo anchor('index.php/Listas/verPorCat?cat='.urlencode($key).'&per_page=1',''.$key.'','class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"'); ?>
                                 <ul class="dropdown-menu scrollable-menu">
                                 <?php
                                 foreach ($value as $s => $p) { ?>
-                                                    
+
                                     <li><a href="<?php echo site_url('index.php/Listas/verPorCat?cat='.urlencode($key).'&subcat='.urlencode($p).'&per_page=1') ?>"><?php echo $p;?></a></li>
 
                                 <?php
@@ -335,7 +335,7 @@ carro de compra */
               <i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;<span class="badge"><?php echo $this->cart->total_items(); ?></span>
             </a>
               <ul class="dropdown-menu animated slideInRight lista-productos-carro scroll" style="margin-top : 5px" >
-                <div class="lista-carro" >
+                <div class="lista-carro">
                   <div class="contenedor-producto-carro container">
                   <?php
                     $carro = $this->cart->contents();
@@ -351,7 +351,7 @@ carro de compra */
                               <div class="row">
                                 <div class="tamaño">
                                   <div class="precio col-lg-6 col-md-6 col-sm-2">
-                                    <span>Precio <?php echo number_format($p['price'],'0',',','.')?></span>
+                                    <span>Precio<br>$ <?php echo number_format($p['price'],'0',',','.')?></span>
                                   </div>
                                   <div class="nombre col-lg-6 col-md-6 col-sm-2">
                                     <span><?php echo $p['name']; ?></span>
@@ -373,17 +373,16 @@ carro de compra */
 
                         <?php
                       } ?>
-                      <li class="col-lg-12 col-md-12 col-sm-12">
+                      <li class="col-lg-12 col-md-12 col-sm-12" style="text-align : center">
                         <div class="info-carro">
                           <div class="info-carro-total">
                               <br>
-                              <i class="glyphicon glyphicon-shopping-cart"></i>
                               <span>Total:</span>
-                              <span><?php echo $this->cart->total(); ?></span>
+                              <span>$ <?php echo $this->cart->total(); ?></span>
                           </div>
                         </div>
-                        <?php echo anchor('index.php/Carro', 'Ir al carro de compra') ?>
-                        <?php echo anchor('index.php/Carro', 'Finalisar la compra') ?>
+                        <i class="glyphicon glyphicon-shopping-cart"><?php echo anchor('index.php/Carro', 'Ir al carro de compra') ?></i>
+                        <i class="glyphicon glyphicon-ok"><?php echo anchor('index.php/Orden', 'Finalisar la compra') ?></i>
                       </li>
                        <?php }else{ ?>
                           <li>

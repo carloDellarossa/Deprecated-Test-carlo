@@ -34,28 +34,42 @@ public function verPorCat(){
 		$offset = intval($pagina) * $limite;
 	}
 
+	$filtro = FALSE;
+	if(isset($_GET["f"])){
+		$filtro = $_GET["f"];
+	}else{
+		$filtro = FALSE;
+	}
+
+
 	$grupo = $_GET["cat"];
+
 	if(isset($_GET["subcat"])){
 		$subGrupo = $_GET["subcat"];
-		$data1['pXcat'] = $this->Producto->listaPorCat($limite,$offset,$grupo,$subGrupo);
-		$total_row = $this->Producto->record_count($subGrupo,'subgrupo');
+		$data1['pXcat'] = $this->Producto->listaPorCat($limite,$offset,$grupo,$subGrupo,$filtro);
+		$total_row = $this->Producto->record_count($subGrupo,'subgrupo',$filtro);
 		$config["base_url"] = base_url() . "index.php/Listas/verPorCat";
 		$config['first_url'] = "?cat=$grupo&subcat=$subGrupo&per_page=1";
+		$data1['filtros'] = $this->Producto->filtros($grupo,$subGrupo,$filtro);
 	}else{
-		$data1['pXcat'] = $this->Producto->listaPorCat($limite,$offset,$grupo);
-			$total_row = $this->Producto->record_count($grupo,'grupo');
+			$subGrupo = 0;
+			$data1['pXcat'] = $this->Producto->listaPorCat($limite,$offset,$grupo,$subGrupo,$filtro);
+			$total_row = $this->Producto->record_count($grupo,'grupo',$filtro);
 			$config["base_url"] = base_url() . "index.php/Listas/verPorCat";
 			$config['first_url'] = "?cat=$grupo&per_page=1";
+			$data1['filtros'] = $this->Producto->filtros($grupo,$subGrupo,$filtro);
 	}
-	$config['last_link'] = FALSE;
+	$config['num_links'] = 2;
+//	$config['last_link'] = TRUE;
+	$config['last_link'] = 'Ultima';
+	$config['first_link'] = 'Primera';
 	$config["total_rows"] = $total_row;
-	$config['num_links'] = $total_row;
 	$config['use_page_numbers'] = TRUE;
 	$config['reuse_query_string'] = True;
 	$config['cur_tag_open'] = '&nbsp;<a class="current">';
 	$config['cur_tag_close'] = '</a>';
-	$config['next_link'] = 'Next';
-	$config['prev_link'] = 'Previous';
+	$config['next_link'] = 'Siguiente';
+	$config['prev_link'] = 'Anterior';
 	$config['$first_url'] = '';
 
 	$this->pagination->initialize($config);
@@ -65,16 +79,6 @@ public function verPorCat(){
 	else{
 	$page = 1;
 	}
-
-		// //query a db
-		// if(isset($_GET["subcat"])){
-		// 	$subGrupo = $_GET["subcat"];
-		// 	$data1['pXcat'] = $this->Producto->listaPorCat($grupo,$subGrupo);
-		// }else{
-		// 	$data1['pXcat'] = $this->Producto->listaPorCat($grupo);
-		//
-		// }
-
 		$str_links = $this->pagination->create_links();
 		$data1["links"] = explode('&nbsp;',$str_links );
 
@@ -83,9 +87,10 @@ public function verPorCat(){
 	$this->load->view('sitio/header');
 	$this->load->view('menu/top');
 	$this->load->model('Categorias');
-$data4['categorias'] = $this->Categorias->catArray();
-$this->load->view('menu/cat',$data4);
+	$data4['categorias'] = $this->Categorias->catArray();
+	$this->load->view('menu/cat',$data4);
 		//contenido
+
 	$this->load->view('listas/listaPorCat',$data1);
 		//maqueta btm
 	$this->load->view('sitio/redesSociales');
@@ -95,20 +100,17 @@ $this->load->view('menu/cat',$data4);
 
 		function agregar() {
 			$p = $_GET["cat"];
-		// $this->load->model('Producto');
-
-		// $producto = $this->Producto->producto($this->input->post('id'));
 		if(isset($_SERVER['HTTP_REFERER'])) { $previous = $_SERVER['HTTP_REFERER']; }
-
+		$desc = $this->input->post('name');
+		$aRemplasar = array('/','(',')','*','#','%');
+		$d = str_replace($aRemplasar,'-',$desc);
 		$insert = array(
 			'id' => $this->input->post('id'),
 			'qty' => 1,
 			'price' => $this->input->post('price'),
-			'name' => $this->input->post('name')
+			'name' => $d
 		);
-
 			$this->cart->insert($insert);
-
 			redirect($previous);
 		}
 
@@ -123,6 +125,22 @@ $this->load->view('menu/cat',$data4);
 			redirect($previous);
 		}
 
+		function filtrar(){
+			if(isset($_SERVER['HTTP_REFERER'])) {
+				$previous = $_SERVER['HTTP_REFERER'];
+			}
+
+			$filtro = FALSE;
+			if(isset($_GET["f"])){
+				$filtro = $_GET["f"];
+			}else{
+				$filtro = FALSE;
+			}
+
+			$previous .= '&f='.$filtro.'';
+
+			redirect($previous);
+		}
 
 
 }

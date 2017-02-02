@@ -32,21 +32,22 @@ class Inicio extends CI_Controller {
 
 
 		function agregar() {
-
+			$p = $_GET["cat"];
 		// $this->load->model('Producto');
 
 		// $producto = $this->Producto->producto($this->input->post('id'));
-
+		if(isset($_SERVER['HTTP_REFERER'])) { $previous = $_SERVER['HTTP_REFERER']; }
+		$desc = $this->input->post('name');
+		$aRemplasar = array('/','(',')','*','#','%');
+		$d = str_replace($aRemplasar,'-',$desc);
 		$insert = array(
 			'id' => $this->input->post('id'),
 			'qty' => 1,
 			'price' => $this->input->post('price'),
-			'name' => $this->input->post('name')
+			'name' => $d
 		);
-
 			$this->cart->insert($insert);
-
-			redirect('index.php/Inicio');
+					redirect($previous);
 		}
 
 

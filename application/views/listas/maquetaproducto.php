@@ -3,7 +3,7 @@
   <div class="title container">
     <h2>Productos</h2>
   </div>
-  <div class="contenedor-producto container">
+  <div class="container">
     <ul class="lista-productos">
       <li class="col-lg-12 col-md-15 col-sm-20">
         <div class="producto">

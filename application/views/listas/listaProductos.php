@@ -106,13 +106,13 @@
   <div class="title container">
     <h1>Productos mas vendidos</h1>
   </div>
-  <div class="contenedor-producto container">
+  <div class="container-fluid">
 	    <ul class="lista-productos">
 	      <?php foreach ($productosL as $p){
 					echo form_open('index.php/Inicio/agregar');
 	        $file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$p['pro_codprod']. '.jpg';
 	        $file_headers = @get_headers($file); ?>
-	      <li class="col-lg-3 col-md-4 col-sm-6">
+	      <li class="col-lg-2 col-md-2 col-sm-6">
 	        <div class="producto">
 	          <a href="<?php echo site_url('index.php/Unproducto?codigo='.urlencode($p['pro_codprod']).'')?>">
 	            <div class="producto-imagen">

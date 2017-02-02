@@ -104,91 +104,83 @@
 
 
 /* PAGINACION*/
-#pagination{
-margin: 40 40 0;
+.paginacion {
+	text-align: center;
+	background-color: #ffffff;
+	border-color: #b2b1b1;
+	top: 50px;
+	padding: 4px;
 }
 
-#pagination2{
-margin: 40 40 0;
+.paginacion .pagination > li > a {
+  color: #000000;
+}
+.paginacion .pagination > li > a:hover,
+.paginacion .pagination > li > a:focus {
+  color: #000000;
 }
 
-ul.tsc_pagination li a
-{
-border:solid 1px;
-border-radius:3px;
--moz-border-radius:3px;
--webkit-border-radius:3px;
-padding:6px 9px 6px 9px;
+.paginacion .pagination  > .active > a,
+.paginacion .pagination  > .active > a:hover,
+.paginacion .pagination  > .active > a:focus {
+  border: ;
+  border-color : #cecece;
+  color: #000000;
+  background-color: #cecece;
 }
-ul.tsc_pagination li
-{
-padding-bottom:1px;
+.paginacion .pagination  > .open > a,
+.paginacion .pagination  > .open > a:hover,
+.paginacion .pagination  > .open > a:focus {
+  color: #000000;
+  background-color: #cecece;
 }
-ul.tsc_pagination li a:hover,
-ul.tsc_pagination li a.current
-{
-color:#FFFFFF;
-box-shadow:0px 1px #EDEDED;
--moz-box-shadow:0px 1px #EDEDED;
--webkit-box-shadow:0px 1px #EDEDED;
+
+.paginacion .current {
+	color: #000000;
+	background-color: #cecece;
 }
-ul.tsc_pagination
-{
-margin:4px 0;
-padding:0px;
-height:100%;
-overflow:hidden;
-font:12px 'Tahoma';
-list-style-type:none;
-}
-ul.tsc_pagination li
-{
-float:left;;
-margin:0px;
-padding:0px;
-margin-left:5px;
-}
-ul.tsc_pagination li a
-{
-color:black;
-display:inline;
-text-decoration:none;
-padding:7px 10px 7px 10px;
-}
-ul.tsc_pagination li a img
-{
-border:none;
-}
-ul.tsc_pagination li a
-{
-color:#0A7EC5;
-border-color:#8DC5E6;
-background:#F8FCFF;
-}
-ul.tsc_pagination li a:hover,
-ul.tsc_pagination li a.current
-{
-text-shadow:0px 1px #388DBE;
-border-color:#3390CA;
-background:#58B0E7;
-background:-moz-linear-gradient(top, #B4F6FF 1px, #63D0FE 1px, #58B0E7);
-background:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0.02, #B4F6FF), color-stop(0.02, #63D0FE), color-stop(1, #58B0E7));
-}
+
 </style>
 
 <?php
 if (count($pXcat) == 0) {
 	echo '<br>No hay productos diponobles en esta catergoria';
-}else{
-	//echo '<pre>'; var_dump($pXcat); echo '</pre>';
-	?>
-
-<!--Lista de productos-->
+}else{ ?>
 <div class="lista-todos-productos">
   <div class="title container">
+
     <h1><?php echo $pXcat[0]['grupo'];?></h1>
+		TODO Filtrar por mas de un paramatro para que no re resetee ejemplo filtar por marca primero luego por subgrupo2 y q vuelva a mostrar todas las marcas 
   </div>
-  <div class="contenedor-producto container">
+	<div>
+		<nav class="paginacion" aria-label="Page navigation">
+		  <ul class="pagination" >
+
+				<?php foreach ($links as $link) {
+				echo "<li>". $link."</li>";
+
+				} ?>
+
+		  </ul>
+		</nav>
+	</div>
+  <div class="container-fluid">
+		<div class="filtros col-lg-2 col-md-2 col-sm-4">
+				<?php //echo '<pre>'; var_dump($filtros); echo '</pre>'; ?>
+				 <ul>
+						 <?php foreach ($filtros as $filtro => $v){?>
+						 <h1><?php	echo $filtro; ?></h1>
+						 <ul style="max-height: 1000px; overflow: auto">
+							 <?php for($i = 0; $i < count($v); $i++) {?>
+								 <?php foreach ($v[$i] as $key => $value){?>
+									<li><a href="<?php echo site_url('index.php/Listas/filtrar?f='.$value.'') ?>"><?php echo $value;?></a></li>
+								 <?php } ?>
+							 <?php } ?>
+						 </ul>
+						 <?php } ?>
+				 </ul>
+		</div>
+		<div class="col-lg-10 col-md-10 col-sm-8">
 	    <ul class="lista-productos">
 
 
@@ -239,15 +231,19 @@ if (count($pXcat) == 0) {
 		 <?php }?>
 	    </ul>
 		</div>
+	</div>
 </div>
 <?php
 }
 ?>
-<div id="pagination">
-<ul class="tsc_pagination">
+<div >
+	<nav class="paginacion" aria-label="Page navigation">
+	  <ul class="pagination" >
 
-<!-- Show pagination links -->
-<?php foreach ($links as $link) {
-echo "<li>". $link."</li>";
-} ?>
+			<?php foreach ($links as $link) {
+			echo "<li>". $link."</li>";
+			} ?>
+
+	  </ul>
+	</nav>
 </div>

@@ -13,7 +13,8 @@
 }
 
 </style>
-    <div class="redes row">
+    <div class="container-fluid">
+      <div class="redes row">
         <div class="txt col-md-12">
           <h3>Encuentranos en nuestras redes sociales:</h3></div>
         <div class="col-md-12">
@@ -48,4 +49,5 @@
                 </a>
             </div>
         </div>
+      </div>
     </div>

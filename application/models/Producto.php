@@ -97,7 +97,7 @@ class Producto extends CI_Model {
         		psl_codbodega = '1'
 
 			order by pro_codprod asc
-        limit 8");
+        limit 12");
 			return $result_set->result_array();
         }
 
@@ -130,7 +130,7 @@ class Producto extends CI_Model {
     			    r.pre_rangoinicial = '1' and
     			    r.pre_codlista='1'
 			order by r.pre_maxdesctorecargo DESC
-			limit 4");
+			limit 6");
 			return $result_set->result_array();
         }
 
@@ -163,18 +163,29 @@ class Producto extends CI_Model {
 			    r.pre_rangoinicial = '1' and
 			    r.pre_codlista='1'
 			order by p.feccreacion DESC
-			limit 4");
+			limit 6");
 			return $result_set->result_array();
         }
 
         //LISTADO POR CATEGORIAS
-        public function listaPorCat($limite,$offset,$grupo,$subGrupo=FALSE){
-          if($subGrupo == FALSE){
+        public function listaPorCat($limite,$offset,$grupo,$subGrupo,$filtro=FALSE){
+
+          if($subGrupo == 0){
             $objtivo = 'g.aap_texto';
             $cat = $grupo ;
           }else{
             $objtivo = 'sg.aap_texto';
             $cat = $subGrupo;
+          }
+
+          if($filtro==FALSE){
+            $f='';
+          }else{
+            $f="and
+              (m.aap_texto  = '". $filtro ."' or
+              sg1.aap_texto = '". $filtro ."' or
+              sg2.aap_texto = '". $filtro ."'
+              )";
           }
           $result_set = $this->db->query(
           "select
@@ -205,18 +216,29 @@ class Producto extends CI_Model {
            where (psl_saldo > 1 and pro_vigencia = 'S')
            and
            ".$objtivo." SIMILAR TO '". $cat ."'
-            order by pro_desc limit ".$limite." offset ".$offset."  ");
+           ". $f ."
+            order by pro_desc limit ".$limite." offset ".$offset." ");
 
 			         return $result_set->result_array();
 
         }
 
         //CONTAR ROWS PARA PAGINACION
-        public function record_count($valor,$cat){
+        public function record_count($valor,$cat,$filtro=FALSE){
           if($cat=='grupo'){
             $objtivo = 'g.aap_texto';
           }else if ($cat == 'subgrupo'){
             $objtivo = 'sg.aap_texto';
+          }
+
+          if($filtro==FALSE){
+            $f='';
+          }else{
+            $f="and
+              (m.aap_texto  = '". $filtro ."' or
+              sg1.aap_texto = '". $filtro ."' or
+              sg2.aap_texto = '". $filtro ."'
+              )";
           }
           return $this->db->count_all("sto_producto
             left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
@@ -228,7 +250,8 @@ class Producto extends CI_Model {
             left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
            where (psl_saldo > 5 and pro_vigencia = 'S')
            and
-           ".$objtivo." Similar TO '". $valor ."' ");
+           ".$objtivo." Similar TO '". $valor ."'
+           ". $f ." ");
           }
 
           //TESTING
@@ -254,27 +277,54 @@ class Producto extends CI_Model {
             "update producto set tienefoto = FALSE where codigo = '".$c."'");
           }
 
-          public function filtros(){
-            $result_set = $this->db->query(
-            "select distinct
 
-        m.aap_texto as marca,g.aap_texto as grupo,sg.aap_texto as subgrupo,sg1.aap_texto as subgrupo1,sg2.aap_texto as subgrupo2
+          public function filtros($grupo,$subGrupo,$filtro=false){
+                  if($subGrupo == 0){
+                    $objtivo = 'g.aap_texto';
+                    $cat = $grupo ;
+                  }else{
+                    $objtivo = 'sg.aap_texto';
+                    $cat = $subGrupo;
+                  }
 
-from sto_producto
-left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
-left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
-left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
-left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
-left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
-left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
-left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
-where
-g.aap_texto = 'ESCOLAR' and
-sg.aap_texto = 'Goma EVA'");
+                  if($filtro==FALSE){
+                    $f='';
+                  }else{
+                    $f="and
+                      (m.aap_texto  = '". $filtro ."' or
+                      sg1.aap_texto = '". $filtro ."' or
+                      sg2.aap_texto = '". $filtro ."'
+                      )";
+                  }
 
-                 return $result_set->result_array();
+                  $paramatros = array(
+                    'marca' => 'm.aap_texto as marca',
+                    'subgrupo1' => 'sg1.aap_texto as subgrupo1',
+                    'subgrupo2' => 'sg2.aap_texto as subgrupo2');
+                  $resultado = [];
+                  foreach ($paramatros as $pam => $v) {
+                    //$k = array_keys($f);
+                    $result_set = $this->db->query(
+                    "select distinct
+                    ".$v."
+                    from sto_producto
+                      left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
+                      left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
+                      left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
+                      left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
+                      left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
+                      left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
+                      left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+                    where
+                      (psl_saldo > 1 and pro_vigencia = 'S')
+                    and
+                    ".$objtivo." SIMILAR TO '". $cat ."'
+                    ". $f ." ");
+                    $resultado[$pam] = $result_set->result_array();
+                  }
+                  return $resultado;
+                }
 
-          }
 
 
 }

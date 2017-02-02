@@ -8,7 +8,7 @@ class Testfotos extends CI_Controller {
 	{
 		$this->load->view('sitio/header');
 		$this->load->model('Producto');
-		$data1['productosL'] = $this->Producto->filtros();
+		$data1['filtros'] = $this->Producto->filtros('ESCOLAR');
 		$this->load->view('listas/testFotos',$data1);
 	}
 
