@@ -15,6 +15,10 @@
   text-decoration : none;
   color : #cecece;
 }
+
+@media (max-width: 770px) {
+
+}
 </style>
 <div class="sucursales row">
     <div class="col-md-3">

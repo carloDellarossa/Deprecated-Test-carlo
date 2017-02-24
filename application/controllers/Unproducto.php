@@ -6,6 +6,7 @@ class Unproducto extends CI_Controller {
 
 	public function index()
 	{
+		//TODO array de fotos
 		//modelos
 		$this->load->library('cart');
 		$this->load->model('Producto');
@@ -30,7 +31,7 @@ class Unproducto extends CI_Controller {
 
 
 	}
-
+//TODO sacar estas funciones de aqui y dejar solo las que estan en carro
 	function agregar() {
 		$p = $_GET["cat"];
 	// $this->load->model('Producto');

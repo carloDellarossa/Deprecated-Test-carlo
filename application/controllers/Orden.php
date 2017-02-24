@@ -14,8 +14,8 @@ class Orden extends CI_Controller {
 		$this->load->view('sitio/header');
 		$this->load->view('menu/top');
     $this->load->model('Categorias');
-$data4['categorias'] = $this->Categorias->catArray();
-$this->load->view('menu/cat',$data4);
+    $data4['categorias'] = $this->Categorias->catArray();
+    $this->load->view('menu/cat',$data4);
 
 		// resumen de la orden
 		$this->load->view('orden/orden');

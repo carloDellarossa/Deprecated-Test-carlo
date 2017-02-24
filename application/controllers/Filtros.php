@@ -6,7 +6,7 @@ class Filtros extends CI_Controller {
 	public function index(){
 
 	}
-
+ //TODO separar los filtros, asi poder armar mejor las quesrys
 	function porMarca(){
 
 	}
@@ -20,6 +20,6 @@ class Filtros extends CI_Controller {
 	}
 
 	function porSub2(){
-		
+
 	}
 }

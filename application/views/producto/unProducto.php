@@ -126,7 +126,7 @@ limites del container */
 }
 
 .container-fluid{
-	
+
 	margin: 0 auto;
 }
 
@@ -258,19 +258,7 @@ thubs*/
 							<?php } ?>
 						</div>
 						<!-- SEGUNDARIAS	 -->
-						<div class="container service1-items col-sm-3 col-md-3 pull-left">
 
-								<a id="item-1" class="service1-item">
-									<img src="<?php echo site_url('img/producto/producto1.jpg');?>" alt=""></img>
-								</a>
-								<a id="item-2" class="service1-item">
-									<img src="<?php echo site_url('img/producto/producto2.jpg');?>" alt=""></img>
-								</a>
-								<a id="item-3" class="service1-item">
-									<img src="<?php echo site_url('img/producto/producto3.jpg');?>" alt=""></img>
-								</a>
-
-						</div>
 
 					<!-- INFO PRODUCTO -->
 					<?php echo form_open('index.php/Unproducto/agregar');?>
@@ -291,10 +279,15 @@ thubs*/
 																	<th data-field="cant">Precio :</th>
 																	<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
 																<?php }else{?>
-																<th data-field="cant">A :</th>
-																<td><?php echo $r['rf']?></td>
-																<th data-field="cant">Precio :</th>
-																<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
+																	<?php if ($r['rf']=='999999'){?>
+																		<th data-field="cant">O :</th>
+																		<td><?php echo 'mas'?></td>
+																	<?php }else{ ?>
+																		<th data-field="cant">A :</th>
+																		<td><?php echo $r['rf']?></td>
+																	<?php } ?>
+																	<th data-field="cant">Precio :</th>
+																	<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
 																<?php } ?>
 													</tr>
 												<?php

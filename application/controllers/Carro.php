@@ -26,23 +26,30 @@ class Carro extends CI_Controller {
 
 	}
 
-		function remove($rowid) {
+  function remove($rowid) {
 
-		$this->cart->update(array(
-			'rowid' => $rowid,
-			'qty' => 0
-		));
-			redirect('index.php/Carro');
-		}
+  $this->cart->update(array(
+    'rowid' => $rowid,
+    'qty' => 0
+  ));
+    if(isset($_SERVER['HTTP_REFERER'])) { $previous = $_SERVER['HTTP_REFERER']; }
+    redirect($previous);
+  }
 
-		function mod($rowid) {
+  function filtrar(){
+    if(isset($_SERVER['HTTP_REFERER'])) {
+      $previous = $_SERVER['HTTP_REFERER'];
+    }
 
-		$qty = $this->input->post('qty');
+    $filtro = FALSE;
+    if(isset($_GET["f"])){
+      $filtro = $_GET["f"];
+    }else{
+      $filtro = FALSE;
+    }
 
-		$this->cart->update(array(
-			'rowid' => $rowid,
-			'qty' => $qty
-		));
-			redirect('index.php/Carro');
-		}
+    $previous .= '&per_page=1&f='.$filtro.'';
+
+    redirect($previous);
+  }
 }

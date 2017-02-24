@@ -7,20 +7,10 @@ class Producto extends CI_Model {
                 $this->db = $this->load->database('default',true);
                 $local = "1";
         }
+//TODO falta agregar lista al comienso de todas las querys
+//TODO modular las funciones
 
-        //OBTENER local
-        //TODO REVISAR LISTAS DE PRECIO
-        //
-        public function setLocal($l){
-        	if (isset($l)) {
-        		$local = $l;
-        	}else{
-        		$local = '1'; // por ahora 1 seria tienda default
-        	}
-        	return $local;
-        }
-
-        //LISTAR PRODUCTO ESPESIFICO
+//LISTAR PRODUCTO ESPESIFICO
         public function producto($p){
 
         	$local = '1'; // por ahora 1 seria tienda default
@@ -46,13 +36,13 @@ class Producto extends CI_Model {
         		p.pro_codprod = psl_codprod and
         		pro_codprod = '".$p."' and
         		pre_rangoinicial = '1' and
-        		pre_codlista='10' and
+        		pre_codlista='1' and
         		psl_saldo != '0' and
         		psl_codbodega = '1' ");
 			return $result_set->result_array();
         }
 
-        //LISTA RANGO DE PRECIO DE UN PRODUCTO EN ESPESIFICO
+//LISTA RANGO DE PRECIO DE UN PRODUCTO EN ESPESIFICO
         public function rangos($cod){
           $result_set = $this->db->query(
             "select
@@ -63,14 +53,15 @@ class Producto extends CI_Model {
             where
               pre_codprod = '".$cod."'
             and
-              pre_codlista ='10'");
+              pre_codlista ='1'
+            order by ri");
 
           return $result_set -> result_array();
          }
 
-        //LISTADO POR PRODUCTOS MAS VENDIDOS
-        //TODO FALTA FILTRAR
-        //
+//LISTADO POR PRODUCTOS MAS VENDIDOS
+//TODO FALTA FILTRAR
+//
         public function listaProductos(){
         	$result_set = $this->db->query(
         	"select
@@ -101,7 +92,7 @@ class Producto extends CI_Model {
 			return $result_set->result_array();
         }
 
-        //LISTADO POR OFERTAS
+//LISTADO POR OFERTAS
         public function listaOfertas(){
         	$result_set = $this->db->query(
         	"select
@@ -123,7 +114,7 @@ class Producto extends CI_Model {
             left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
             left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
             left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
-            left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+            left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '1' and pre_correlativo = '1'
     			where
              (psl_saldo > 1 and pro_vigencia = 'S') and
     			    r.pre_codprod = p.pro_codprod and
@@ -134,7 +125,7 @@ class Producto extends CI_Model {
 			return $result_set->result_array();
         }
 
-        //LISTADO POR NOVEDADES
+//LISTADO POR NOVEDADES
         public function listaNovedades(){
         	$result_set = $this->db->query(
         	"select
@@ -156,7 +147,7 @@ class Producto extends CI_Model {
         left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
         left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
         left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
-        left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+        left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '1' and pre_correlativo = '1'
 			where
          (psl_saldo > 1 and pro_vigencia = 'S') and
 			    r.pre_codprod = p.pro_codprod and
@@ -167,9 +158,9 @@ class Producto extends CI_Model {
 			return $result_set->result_array();
         }
 
-        //LISTADO POR CATEGORIAS
+//LISTADO POR CATEGORIAS
         public function listaPorCat($limite,$offset,$grupo,$subGrupo,$filtro=FALSE){
-
+          //validacion de subgrupo
           if($subGrupo == 0){
             $objtivo = 'g.aap_texto';
             $cat = $grupo ;
@@ -177,7 +168,7 @@ class Producto extends CI_Model {
             $objtivo = 'sg.aap_texto';
             $cat = $subGrupo;
           }
-
+          //validacion de filtro
           if($filtro==FALSE){
             $f='';
           }else{
@@ -187,13 +178,14 @@ class Producto extends CI_Model {
               sg2.aap_texto = '". $filtro ."'
               )";
           }
+
           $result_set = $this->db->query(
           "select
               pro_codprod,
               pro_desc,
               pro_glosa,
               m.aap_texto as marca,g.aap_texto as grupo,sg.aap_texto as subgrupo,sg1.aap_texto as subgrupo1,sg2.aap_texto as subgrupo2,pro_vigencia as vigencia,
-            case
+              case
               --when (puc.precio is not null and puc.precio >1) then puc.precio
               when (pro_costoventa is not null and pro_costoventa>0) then round(pro_costoventa)
               when (pro_costoventa is null or pro_costoventa=0) and (pro_costo is not null AND pro_costo<>0) then round(pro_costo)
@@ -212,18 +204,18 @@ class Producto extends CI_Model {
             left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
             left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
             left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
-            left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
-           where (psl_saldo > 1 and pro_vigencia = 'S')
-           and
+            left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '1' and pre_correlativo = '1'
+          where (psl_saldo > 1 and pro_vigencia = 'S')
+          and
            ".$objtivo." SIMILAR TO '". $cat ."'
            ". $f ."
-            order by pro_desc limit ".$limite." offset ".$offset." ");
+          order by pro_desc limit ".$limite." offset ".$offset." ");
 
-			         return $result_set->result_array();
+			    return $result_set->result_array();
 
         }
 
-        //CONTAR ROWS PARA PAGINACION
+//CONTAR ROWS PARA PAGINACION
         public function record_count($valor,$cat,$filtro=FALSE){
           if($cat=='grupo'){
             $objtivo = 'g.aap_texto';
@@ -247,14 +239,14 @@ class Producto extends CI_Model {
             left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
             left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
             left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
-            left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+            left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '1' and pre_correlativo = '1'
            where (psl_saldo > 5 and pro_vigencia = 'S')
            and
            ".$objtivo." Similar TO '". $valor ."'
            ". $f ." ");
           }
 
-          //TESTING
+//TESTING
           public function testFotos(){
             $result_set = $this->db->query(
             "select
@@ -267,18 +259,15 @@ class Producto extends CI_Model {
               left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
               left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
               left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
-              left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+              left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '1' and pre_correlativo = '1'
             order by grupo, subgrupo, subgrupo1,subgrupo2");
             return $result_set->result_array();
           }
 
-          public function add($c){
-            $result_set = $this->db->query(
-            "update producto set tienefoto = FALSE where codigo = '".$c."'");
-          }
 
-
+//obtener filtros por categoria y subcategori
           public function filtros($grupo,$subGrupo,$filtro=false){
+
                   if($subGrupo == 0){
                     $objtivo = 'g.aap_texto';
                     $cat = $grupo ;
@@ -286,7 +275,8 @@ class Producto extends CI_Model {
                     $objtivo = 'sg.aap_texto';
                     $cat = $subGrupo;
                   }
-
+                  
+                  //TODO segundo filtro
                   if($filtro==FALSE){
                     $f='';
                   }else{
@@ -314,7 +304,7 @@ class Producto extends CI_Model {
                       left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
                       left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
                       left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
-                      left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '10' and pre_correlativo = '1'
+                      left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '1' and pre_correlativo = '1'
                     where
                       (psl_saldo > 1 and pro_vigencia = 'S')
                     and
@@ -324,7 +314,7 @@ class Producto extends CI_Model {
                   }
                   return $resultado;
                 }
-
+//Buscar
 
 
 }

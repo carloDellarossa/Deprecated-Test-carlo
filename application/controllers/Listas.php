@@ -41,7 +41,7 @@ public function verPorCat(){
 		$filtro = FALSE;
 	}
 
-
+//TODO limpiar esto para no repetir tanto el codigo
 	$grupo = $_GET["cat"];
 
 	if(isset($_GET["subcat"])){
@@ -65,7 +65,7 @@ public function verPorCat(){
 	$config['first_link'] = 'Primera';
 	$config["total_rows"] = $total_row;
 	$config['use_page_numbers'] = TRUE;
-	$config['reuse_query_string'] = True;
+	$config['reuse_query_string'] = TRUE;
 	$config['cur_tag_open'] = '&nbsp;<a class="current">';
 	$config['cur_tag_close'] = '</a>';
 	$config['next_link'] = 'Siguiente';
@@ -114,7 +114,7 @@ public function verPorCat(){
 			redirect($previous);
 		}
 
-
+//TODO sacar estas funciones de aqui y dejar solo las que estan en carro
 		function remove($rowid) {
 
 		$this->cart->update(array(
@@ -137,7 +137,7 @@ public function verPorCat(){
 				$filtro = FALSE;
 			}
 
-			$previous .= '&f='.$filtro.'';
+			$previous .= '&per_page=1&f='.$filtro.'';
 
 			redirect($previous);
 		}

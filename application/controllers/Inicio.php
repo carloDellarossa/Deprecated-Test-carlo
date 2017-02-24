@@ -15,6 +15,7 @@ class Inicio extends CI_Controller {
 			$data1['productosL'] = $this->Producto->listaProductos();
 			$data2['productosO'] = $this->Producto->listaOfertas();
 			$data3['productosN'] = $this->Producto->listaNovedades();
+			//TODO crear template con las views, incluyendo categorias
 			$data4['categorias'] = $this->Categorias->catArray();
 		//falta si $local no esta setiado volver a aleguir tienda o definir si va a exitir una por default
 
@@ -31,6 +32,7 @@ class Inicio extends CI_Controller {
 	}
 
 
+//TODO sacar estas funciones de aqui y dejar solo las que estan en carro
 		function agregar() {
 			$p = $_GET["cat"];
 		// $this->load->model('Producto');
@@ -53,11 +55,12 @@ class Inicio extends CI_Controller {
 
 		function remove($rowid) {
 
-		$this->cart->update(array(
-			'rowid' => $rowid,
-			'qty' => 0
-		));
-			redirect('index.php/Inicio');
+					$this->cart->update(array(
+						'rowid' => $rowid,
+						'qty' => 0
+					));
+						if(isset($_SERVER['HTTP_REFERER'])) { $previous = $_SERVER['HTTP_REFERER']; }
+						redirect($previous);
 		}
 
 }

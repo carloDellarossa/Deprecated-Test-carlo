@@ -4,7 +4,7 @@
   <div class="title container">
     <h1>Novedades</h1>
   </div>
-  <div class="container-fluid">
+  <div class="container-fluid ">
 	    <ul class="lista-productos">
 	      <?php foreach ($productosN as $n){
 					echo form_open('index.php/Inicio/agregar');

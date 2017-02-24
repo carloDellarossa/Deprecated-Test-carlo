@@ -7,7 +7,7 @@ class Cotisacion extends CI_Model {
                 parent::__construct();
                 $this->db = $this->load->database('default',true);
         }
-
+//TODO migrar el codigo, de productos para aka 
         public function filtros($grupo,$subGrupo =false){
                 if($subGrupo == FALSE){
                   $objtivo = 'g.aap_texto';

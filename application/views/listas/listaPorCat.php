@@ -139,6 +139,8 @@
 	color: #000000;
 	background-color: #cecece;
 }
+/*filtros */
+
 
 </style>
 
@@ -149,8 +151,8 @@ if (count($pXcat) == 0) {
 <div class="lista-todos-productos">
   <div class="title container">
 
-    <h1><?php echo $pXcat[0]['grupo'];?></h1>
-		TODO Filtrar por mas de un paramatro para que no re resetee ejemplo filtar por marca primero luego por subgrupo2 y q vuelva a mostrar todas las marcas 
+    <h5><?php echo $pXcat[0]['grupo'];?></h5>
+		TODO Filtrar por mas de un paramatro para que no re resetee ejemplo filtar por marca primero luego por subgrupo2 y q vuelva a mostrar todas las marcas
   </div>
 	<div>
 		<nav class="paginacion" aria-label="Page navigation">
@@ -180,7 +182,7 @@ if (count($pXcat) == 0) {
 						 <?php } ?>
 				 </ul>
 		</div>
-		<div class="col-lg-10 col-md-10 col-sm-8">
+		<div class="col-lg-10 col-md-10 col-sm-6 col-xs-6">
 	    <ul class="lista-productos">
 
 
