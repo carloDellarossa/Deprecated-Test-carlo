@@ -98,8 +98,8 @@ padding-bottom: 0px;
     background-color: #cecece;
   }
 }
-/*
-carro de compra */
+
+/*carro de compra */
 .lista-carro{
 	margin-top:10px;
 	margin-bottom:20px;
@@ -328,7 +328,17 @@ carro de compra */
             </li>
               <?php }
               ?>
-          </ul>
+          </ul><!-- termina menu categorias -->
+
+          <!-- Buscar -->
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Buscar">
+            </div>
+            <button type="submit" class="btn btn-default">Buscar</button>
+          </form>
+
+          <!-- Carro -->
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -373,8 +383,10 @@ carro de compra */
 
                         <?php
                       } ?>
+
+
                       <li class="col-lg-12 col-md-12 col-sm-12" style="text-align : center">
-                        <div class="info-carro">
+                        <div class="info-carro text-right">
                           <div class="info-carro-total">
                               <br>
                               <span>Total:</span>
@@ -394,7 +406,7 @@ carro de compra */
               </ul>
             </li>
           </ul>
-		    </div> <!-- termina menu de cateoras de la izq y la parte colapsanle-->
+		    </div> <!-- termina menu-->
 		  </div><!-- termina contenedor -->
 		</nav>
 

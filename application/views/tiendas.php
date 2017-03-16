@@ -1,14 +1,4 @@
-<br>Porfavor seleccione tienda
-<ul>
-<form action="<?php echo site_url('index.php/Inicio');?>" method="post">
-	<li><input type="radio" name="local" value="1" checked>Tienda uno</li>
-	<li><input type="radio" name="local" value="2" >Tienda dos</li>
-	<li><input type="radio" name="local" value="3" >Tienda tres</li>
-	<li><input type="radio" name="local" value="4" >Tienda cuatro</li>
-	<li><input type="radio" name="local" value="5" >Venta empresas</li>
-	<input type="submit" value="ir al sitio">
-</form>
-</ul>
+
 <style>
 
 .container {
@@ -131,6 +121,7 @@ h1 {
 </style>
 
 </div>
+
 <div class="container" style="margin-top:150px;">
   <h1>Libreria giorgio</h1>
   <input type="checkbox" id="menu_opener_id" class="menu_opener">
@@ -140,15 +131,29 @@ h1 {
   <a href="#" class="link_two link_general">Sala Ventas 2</a>
   <a href="#" class="link_three link_general">Sala Ventas 3</a>
   <a href="#" class="link_four link_general">Sala Ventas 4</a>
-  </input>
 </div>
+
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (function(i,s,o,g,r,a,m){
+		i['GoogleAnalyticsObject']=r;
+		i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-46156385-1', 'cssscript.com');
   ga('send', 'pageview');
-
 </script>
+
+
+<br>Porfavor seleccione tienda
+<ul>
+<form action="<?php echo site_url('index.php/Inicio');?>" method="post">
+	<li><input type="radio" name="local" value="1" checked>Tienda uno</li>
+	<li><input type="radio" name="local" value="2" >Tienda dos</li>
+	<li><input type="radio" name="local" value="3" >Tienda tres</li>
+	<li><input type="radio" name="local" value="4" >Tienda cuatro</li>
+	<li><input type="radio" name="local" value="5" >Venta empresas</li>
+	<input type="submit" value="ir al sitio">
+</form>
+</ul>
