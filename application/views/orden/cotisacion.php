@@ -1,9 +1,10 @@
-Cotisacion.php
-
 <!-- Resumen del carro -->
-<br><h1 align="center">carroMenu.php</h1>
+<br><h1 align="center">Cotisacion</h1>
 <?php if($productosC = $this->cart->contents()):?>
-	<div>
+
+<div clss="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
 		<table class="table table-hover">
 		<caption>Carro de compras</caption>
 		<thead>
@@ -28,29 +29,32 @@ Cotisacion.php
 		</table>
 	</div>
 <?php endif; ?>
-
-<?php echo form_open('index.php/Cot/agregar');?>
-
+<div class="col-md-10 col-md-offset-1">
 <!-- Datos del carro -->
 <!-- Datos del cliente -->
 <h3> Ingrese sus datos </h3>
 <?php
-echo form_label('Nombre : ') ,form_input('Nombre', 'nombre');
-echo form_label('Rut : ') ,form_input('Rut', '11111111-1');
-echo form_label('Telefono : ') ,form_input('Telefono', '+56 1 111111111');
-echo form_label('Correo : ') ,form_input('Correo', 'nombre@ejemplo.cl');
+// echo form_label('Nombre : ') ,form_input('Nombre', 'nombre');
+// echo form_label('Rut : ') ,form_input('Rut', '11111111-1');
+// echo form_label('Telefono : ') ,form_input('Telefono', '+56 1 111111111');
+// echo form_label('Correo : ') ,form_input('Correo', 'nombre@ejemplo.cl');
 ?>
-
-<!-- Finalisar compra -->
-<?php
-echo form_submit('action','Generar Cotisacion');
-?>
-<?php echo form_close(); ?>
-
-
-<pre>
-<?php
-foreach ($cot as $c) {
-	print_r($c); 
-}
-?>
+<form>
+	<div class="form-group">
+	<label for="exampleInputName2">Nombre</label>
+	<input type="text" class="form-control" id="exampleInputName2" placeholder="Ingrese su nombre">
+	</div>
+	<div class="form-group">
+	<label for="exampleInputName2">Rut</label>
+	<input type="text" class="form-control" id="exampleInputName2" placeholder="Ingrese su rut con guion y digito verificador">
+	</div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
+  <button type="submit" class="btn btn-default">Cotisar</button>
+</form>
+		</div>
+	</div>
+</div>
+<!--Tomar datos con hidden values para pasarlo al pdf de imprecion y a la base de datos-->

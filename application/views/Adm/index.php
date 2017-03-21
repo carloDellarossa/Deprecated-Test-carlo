@@ -100,6 +100,9 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Productos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
+                                <a href="<?php echo site_url('index.php/Imagenes') ?>">Imagen de productos</a>
+                            </li>
+                            <li>
                                 <a href="#">Ingresar Producto</a>
                             </li>
                             <li>

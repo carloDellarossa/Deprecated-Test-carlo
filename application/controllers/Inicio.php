@@ -5,7 +5,6 @@ class Inicio extends CI_Controller {
 
 	public function index()
 	{
-
 		//librerias
 		$this->load->library('cart');
 		//models
@@ -31,7 +30,6 @@ class Inicio extends CI_Controller {
 		$this->load->view('sitio/footer');
 	}
 
-
 //TODO sacar estas funciones de aqui y dejar solo las que estan en carro
 		function agregar() {
 			$p = $_GET["cat"];
@@ -51,7 +49,6 @@ class Inicio extends CI_Controller {
 			$this->cart->insert($insert);
 					redirect($previous);
 		}
-
 
 		function remove($rowid) {
 
