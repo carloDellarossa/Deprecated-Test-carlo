@@ -1,225 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+h1, h2 { font-family: Arial, sans-serif; font-size: 25px; }
+h2 { font-size: 20px; }
 
+label { font-family: Verdana, sans-serif; font-size: 12px; display: block; }
+input { padding: 3px 5px; width: 250px; margin: 0 0 10px; }
+input[type="file"] { padding-left: 0; }
+input[type="submit"] { width: auto; }
+
+#files { font-family: Verdana, sans-serif; font-size: 11px; }
+#files strong { font-size: 13px; }
+#files a { float: right; margin: 0 0 5px 10px; }
+#files ul { list-style: none; padding-left: 0; }
+#files li { width: 280px; font-size: 12px; padding: 5px 0; border-bottom: 1px solid #CCC; }
+
+</style>
+<!doctype html>
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Administrador Web</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="<?php echo site_url('css/bootstrap.min.css');?>" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="<?php echo site_url('css/sb-admin.css');?>" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="<?php echo site_url('css/plugins/morris.css');?>" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="<?php echo site_url('font-awesome/css/font-awesome.min.css');?>" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="<?php echo base_url()?>js/ajaxfileupload.js"></script>
 </head>
-
 <body>
-    <div id="wrapper">
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Logo</a> <!-- TODO cambiar el logo de acuedordo a la lista de venta -->
-            </div>
-            <!-- Top Menu -->
-              <!-- Algo de info aka -->
-              <!-- Fecha
-              <div>
-                <h5>Fecha aqui</h5>
-              </div>
-              -->
-            <ul class="nav navbar-right top-nav">
-              <!-- Cuenta actual -->
-              <!-- Sala actual -->
-                <!-- Selector de sala  -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Nombre Cuenta <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i>Salir</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Sala de venta <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i>Sala 1</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i>Sala 2</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i>Sala 3</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Sala 4</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Productos <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="<?php echo site_url('index.php/Imagenes') ?>">Imagen de productos</a>
-                            </li>
-                            <li>
-                                <a href="#">Ingresar Producto</a>
-                            </li>
-                            <li>
-                                <a href="#">Modificar Producto</a>
-                            </li>
-                            <li>
-                                <a href="#">Lista Ofertas</a>
-                            </li>
-                            <li>
-                                <a href="#">Lista Novedades</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo1" class="collapse">
-                          <li>
-                              <a href="#">CRUD</a>
-                          </li>
-                          <li>
-                              <a href="#"></a>
-                          </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Ventas <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo2" class="collapse">
-                            <li>
-                                <a href="#">Ventas</a>
-                            </li>
-                            <li>
-                                <a href="#">Cotisacion</a>
-                            </li>
-                            <li>
-                                <a href="#">Ordenes de envio</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> Estadisticas <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo3" class="collapse">
-                            <li>
-                                <a href="#">Por Tienda</a>
-                            </li>
-                            <li>
-                                <a href="#">Totales</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                          Panel de Administracion <small>Resumen por Tienda</small>
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Panel
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <div class="row">
-                  <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile">
-                      <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </form>
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-
+  <div class="wrapper">
+    <div class="conteiner-fluid">
+      <div class="row">
+        <div class="col-lg-6 col-md-offset-1">
+        <h1>Subir Imagen</h1>
         </div>
-        <!-- /#page-wrapper -->
+        <div class="col-lg-6 col-md-offset-1">
+        <form method="post" action="" id="upload_file">
+            <label for="title">Imagen</label>
+            <input type="text" name="title" id="title" value="" />
 
+            <label for="userfile">Archivo</label>
+            <input type="file" name="userfile" id="userfile" size="20" />
+
+            <input type="submit" name="submit" id="submit" />
+        </form>
+        <h2>Files</h2>
+        <div id="files"></div>
+      </div>
+      </div>
     </div>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="<?php echo site_url('js/jquery.js');?>"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo site_url('js/bootstrap.min.js');?>"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="<?php echo site_url('js/plugins/morris/raphael.min.js');?>"></script>
-    <script src="<?php echo site_url('js/plugins/morris/morris.min.js');?>"></script>
-    <script src="<?php echo site_url('js/plugins/morris/morris-data.js');?>"></script>
+  </div>
 
 </body>
-
 </html>
+<script>
+$(function() {
+	$('#upload_file').submit(function(e) {
+		e.preventDefault();
+		$.ajaxFileUpload({
+			url 			:'./upload/upload_file/',
+			secureuri		:false,
+			fileElementId	:'userfile',
+			dataType		: 'json',
+			data			: {
+				'title'				: $('#title').val()
+			},
+			success	: function (data, status)
+			{
+				if(data.status != 'error')
+				{
+					$('#files').html('<p>Reloading files...</p>');
+					refresh_files();
+					$('#title').val('');
+				}
+				alert(data.msg);
+			}
+		});
+		return false;
+	});
+});
+</script>
