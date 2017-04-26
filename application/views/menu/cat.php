@@ -274,6 +274,10 @@ padding-bottom: 0px;
     overflow-x: hidden;
 }
 
+/*.linksCarro h6{
+  display: inline-block;
+  vertical-align: top;
+}*/
 
 </style>
 
@@ -340,6 +344,8 @@ padding-bottom: 0px;
 
           <!-- Carro -->
           <ul class="nav navbar-nav navbar-right">
+
+
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;<span class="badge"><?php echo $this->cart->total_items(); ?></span>
@@ -349,13 +355,24 @@ padding-bottom: 0px;
                   <div class="contenedor-producto-carro container">
                   <?php
                     $carro = $this->cart->contents();
-                    if(isset($carro )){
+                    if($this->cart->total_items() != 0){
                       foreach ($carro as $p) {
                   ?>
                         <li class="col-lg-12 col-md-12 col-sm-12">
                           <div class="producto-carro">
                             <div class="imagen-carro">
-                              <img  src="<?php echo site_url('img/nodisponible.jpg');?>"/>
+                              <?php
+                              $file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$p['id']. '.jpg';
+                              $file_headers = @get_headers($file);
+
+              	              if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+              	              ?>
+              	                <img  src="<?php echo site_url('img/nodisponible.jpg');?>"/><!--Img -->
+              	              <?php
+              	              }else{
+              	              ?>
+              	                <img  src="http://www.libreriagiorgio.cl/lg/imagenes/codigos/<?php echo $p['id'] ?>.jpg"/><!--Img -->
+              	              <?php } ?>
                             </div>
                             <div class="producto-carro-info">
                               <div class="row">
@@ -390,11 +407,19 @@ padding-bottom: 0px;
                           <div class="info-carro-total">
                               <br>
                               <span>Total:</span>
-                              <span>$ <?php echo $this->cart->total(); ?></span>
+                              <span>$ <?php echo number_format($this->cart->total(),'0',',','.'); ?></span>
                           </div>
                         </div>
-                        <i class="glyphicon glyphicon-shopping-cart"><?php echo anchor('index.php/Carro', 'Ir al carro de compra') ?></i>
-                        <i class="glyphicon glyphicon-ok"><?php echo anchor('index.php/Orden', 'Finalisar la compra') ?></i>
+                      </li>
+                      <li class="col-lg-12 col-md-12 col-sm-12" style="text-align : center">
+                        <div>
+                          <h4><i class="glyphicon glyphicon-shopping-cart"></i><?php echo anchor('index.php/Carro', 'Ir al carro de compra') ?></h4>
+                        </div>
+                      </li>
+                      <li class="col-lg-12 col-md-12 col-sm-12" style="text-align : center">
+                        <div>
+                          <h4><i class="glyphicon glyphicon-ok"></i><?php echo anchor('index.php/Orden', 'Finalisar la compra') ?></h4>
+                        </div>
                       </li>
                        <?php }else{ ?>
                           <li>

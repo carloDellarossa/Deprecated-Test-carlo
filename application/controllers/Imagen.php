@@ -2,11 +2,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Imagenes extends CI_Controller {
+class Imagen extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		//$this->load->model('files_model');
+	  $this->load->model('Imagenes');
 		$this->load->database();
 		$this->load->helper('url');
 	}
@@ -26,14 +26,12 @@ class Imagenes extends CI_Controller {
 		    $msg = "";
 		    $file_element_name = 'userfile';
 
-		    if (empty($_POST['title']))
-		    {
+		    if (empty($_POST['title'])){
 		        $status = "error";
 		        $msg = "Please enter a title";
 		    }
 
-		    if ($status != "error")
-		    {
+		    if ($status != "error"){
 		        $config['upload_path'] = './files/';
 		        $config['allowed_types'] = 'gif|jpg|png|doc|txt';
 		        $config['max_size'] = 1024 * 8;
@@ -41,22 +39,16 @@ class Imagenes extends CI_Controller {
 
 		        $this->load->library('upload', $config);
 
-		        if (!$this->upload->do_upload($file_element_name))
-		        {
+		        if (!$this->upload->do_upload($file_element_name)){
 		            $status = 'error';
 		            $msg = $this->upload->display_errors('', '');
-		        }
-		        else
-		        {
+		        }else{
 		            $data = $this->upload->data();
 		            $file_id = $this->files_model->insert_file($data['file_name'], $_POST['title']);
-		            if($file_id)
-		            {
+		            if($file_id){
 		                $status = "success";
 		                $msg = "File successfully uploaded";
-		            }
-		            else
-		            {
+		            }else{
 		                unlink($data['full_path']);
 		                $status = "error";
 		                $msg = "Something went wrong when saving the file, please try again.";
@@ -68,6 +60,20 @@ class Imagenes extends CI_Controller {
 
 	}
 
+	public function files(){
+    $files = $this->files_model->get_files();
+    $this->load->view('files', array('files' => $files));
+}
 
+public function delete_file($file_id){
+    if ($this->files_model->delete_file($file_id)){
+        $status = 'success';
+        $msg = 'File successfully deleted';
+    }else{
+        $status = 'error';
+        $msg = 'Something went wrong when deleteing the file, please try again';
+    }
+    echo json_encode(array('status' => $status, 'msg' => $msg));
+}
 
 }

@@ -14,7 +14,6 @@ div{
 				<th>Codigo</th>
 				<th>Nombre</th>
 				<th>Precio</th>
-				<th>Row id</th>
 				<th>Cantida</th>
 				<th>Eliminar del carro</th>
 				<th>Modificar el carro</th>
@@ -28,7 +27,6 @@ div{
 				<td><?php echo $item['id']; ?></td>
 				<td><?php echo $item['name']; ?></td>
 				<td><?php echo number_format($item['price'],'0',',','.')?></td>
-				<td><?php echo $item['rowid']; ?></td>
 				<td><?php echo form_input('qty',$item['qty']);?></td>
 				<td class="remove">
 				<?php echo form_hidden('id', $item['id']); ?>

@@ -24,14 +24,14 @@
 			<tr>
 				<td><?php echo $item['id']; ?></td>
 				<td><?php echo $item['name']; ?></td>
-				<td><?php echo number_format($item['price'],'0',',','.')?></td>
+				<td>$ <?php echo number_format($item['price'],'0',',','.')?></td>
 				<td><?php echo $item['qty'];?></td>
 				<?php echo form_close(); ?>
 			</tr>
 		<?php endforeach; ?>
 		<tr class="total">
 			<td colspan="2"><strong>Total</strong></td>
-			<td>$<?php echo number_format($this->cart->total(),'0',',','.');?></td>
+			<td>$ <?php echo number_format($this->cart->total(),'0',',','.');?></td>
 			<td></td>
 		</tr>
 		</table>

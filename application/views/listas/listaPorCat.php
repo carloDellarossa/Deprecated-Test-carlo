@@ -167,22 +167,30 @@ if (count($pXcat) == 0) {
 		</nav>
 	</div>
   <div class="container-fluid">
-		<div class="filtros col-lg-2 col-md-2 col-sm-4">
+		<div class="filtros col-lg-2 col-md-2 col-sm-4"
+		style="
+		"> <!-- TODO pasar esto a style principal -->
 				<?php //echo '<pre>'; var_dump($filtros); echo '</pre>'; ?>
 				 <ul>
 						 <?php foreach ($filtros as $filtro => $v){?>
-						 <h1><?php	echo $filtro; ?></h1>
+							 <div style="border-right: 0.5px solid #e7e7e7;
+	 						border-top: 0.5px solid #e7e7e7;
+	 						border-bottom: 0.5px solid #e7e7e7;">
+						 <h3><?php	echo ucwords($filtro); ?></h3>
 						 <ul style="max-height: 1000px; overflow: auto">
 							 <?php for($i = 0; $i < count($v); $i++) {?>
 								 <?php foreach ($v[$i] as $key => $value){?>
+
 									<li><a href="<?php echo site_url('index.php/Listas/filtrar?f='.$value.'') ?>"><?php echo $value;?></a></li>
+
 								 <?php } ?>
 							 <?php } ?>
 						 </ul>
 						 <?php } ?>
+						 </div>
 				 </ul>
 		</div>
-		<div class="col-lg-10 col-md-10 col-sm-6 col-xs-6">
+		<div class="col-lg-10 col-md-10 col-sm-6 col-xs-6" style="border-top: 0.5px solid #e7e7e7;">
 	    <ul class="lista-productos">
 
 

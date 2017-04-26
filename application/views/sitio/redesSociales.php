@@ -2,6 +2,7 @@
 .redes{
   background-color: #cecece;
   min-height: 200px;
+  padding-top: 100px;
 }
 
 .redes h3{
@@ -20,7 +21,7 @@
 }
 
 </style>
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-top: 100px">
       <div class="redes row">
         <div class="txt col-md-12">
           <h3>Encuentranos en nuestras redes sociales:</h3></div>
