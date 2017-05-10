@@ -99,7 +99,7 @@ if (!defined('K_PATH_IMAGES')) {
 		}
 	}
 }
-//TODO /home/pacifik/www/Test-carlo/application/helpers/tcpdf/examples/images/  para modificar la foto
+
 if (!defined('PDF_HEADER_LOGO')) {
 	$tcpdf_header_logo = '';
 	if (@file_exists(K_PATH_IMAGES.'tcpdf_logo.jpg')) {

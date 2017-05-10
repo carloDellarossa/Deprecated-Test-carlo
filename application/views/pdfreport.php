@@ -25,37 +25,53 @@
 ?>
 <!-- Falta darle formato y traer los datos de la orden -->
 <style>
-/*div {
-	background-color: RED;
-}*/
+.boletaNumero{
+	text-align: center;
+	font-size: 20px;
+}
+
+.boletaInfo{
+	text-align: left;
+	font-size: 11px;
+}
+
+.boletaResumen{
+	text-align: right;
+	line-height: 50%;
+}
+
 </style>
-<div>
-	Numero de boleta/factura
+
+<div class="boletaNumero">
+ Numero de boleta/factura
 </div>
 
-<div>
-	<p>Datos de encabezado
-	<p>Rut:
-	Fecha:
-	Razon social:
-	<p>Comprador
-	Folio Fisico:
-	<p>Sucursal:
-	Centro Costo:
-	Moneda
+<div class="boletaInfo">
+	<p>Datos de encabezado</p>
+	<table class="table table-hover">
+			<tr>
+				<td>Rut:</td>
+				<td>Fecha:</td>
+				<td>Razon social:</td>
+			</tr>
+			<tr>
+				<td>Comprador:</td>
+				<td>Folio Fisico:</td>
+				<td>Sucursal:</td>
+			</tr>
+			<tr>
+				<td>Centro Costo:</td>
+				<td>Moneda:</td>
+				<td>Extras:</td>
+			</tr>
+	</table>
 </div>
-<style>
-.tablas {
-	padding-left: 50px;
-	padding-right: 50px
-}
-</style>
+
 <br><h1 align="center">Carro de compras</h1>
 <?php if($productosC = $this->cart->contents()) { ?>
  <div class="tablas">
+	 	<caption>Carro de compras</caption>
 		<table class="table table-hover">
-		<caption>Carro de compras</caption>
-		<thead>
 			<tr>
 				<th>Codigo</th>
 				<th>Nombre</th>
@@ -63,7 +79,6 @@
 				<th>Cantida</th>
 				<th></th>
 			</tr>
-		</thead>
 		<?php foreach ($productosC as $item): ?>
 			<?php echo form_open('index.php/Carro/mod/'.$item['rowid']); ?>
 
@@ -83,19 +98,19 @@
 		</table>
 	</div>
 	<?php }else{
-	echo "no hay productos";
+	echo "No hay productos";
 	} ?>
-<div>
-	<p>Recumen de compra
-	<p>total sin iva
-	<p>total con iva
-	<p>iva
-	<p>descuentos
-	<p>total final
+<div class="boletaResumen">
+	<p>Recumen de compra: $ 0
+	<p>Total sin iva: $ 0
+	<p>Total con iva: $ 0
+	<p>Iva: $ 0
+	<p>Descuentos: $ 0
+	<p>Total final: $ 0
 </div>
 <?php
-		$content = ob_get_contents();
-	ob_end_clean();
+	$content = ob_get_contents();
 	$obj_pdf->writeHTML($content, true, false, true, false, '');
+	ob_end_clean();
 	$obj_pdf->Output('output.pdf', 'I');
 ?>

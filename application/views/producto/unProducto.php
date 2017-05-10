@@ -235,19 +235,17 @@ thubs*/
 </style>
 <div class="lista-un-producto">
 	<div class="container">
-	    <div class="content-wrapper">
+	  <div class="content-wrapper">
 			<div class="item-container">
 				<div class="container">
+					<div class="row">
 						<?php foreach ($producto as $p) { ?>
-
-					  <!-- IMAGENES  -->
-						<?php
-						$file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$p['pro_codprod']. '.jpg';
-		        $file_headers = @get_headers($file);
-						?>
-						<!-- PRINCIPAL -->
-						<div class="product col-md-3 service-image-left">
+						<!-- Imagen -->
+						<div class="producto col-md-4 service-image-left">
 							<?php
+							$file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$p['pro_codprod']. '.jpg';
+							$file_headers = @get_headers($file);
+
 							if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
 							?>
 								<img  src="<?php echo site_url('img/nodisponible.jpg');?>"/><!--Img -->
@@ -257,62 +255,62 @@ thubs*/
 								<img  src="http://www.libreriagiorgio.cl/lg/imagenes/codigos/<?php echo $p['pro_codprod'] ?>.jpg"/><!--Img -->
 							<?php } ?>
 						</div>
-						<!-- SEGUNDARIAS	 -->
 
+						<!--Precio por lista -->
 
-					<!-- INFO PRODUCTO -->
-					<?php echo form_open('index.php/Unproducto/agregar');?>
-					<div class="col-md-6">
-						<div class="nombre"><?php echo $p['pro_desc'] ?></div>
-	        <div class="row">
-	          <div class="rangos col-md-12">
-							<table>
-									<caption>Precio mayorista</caption>
+						<?php echo form_open('index.php/Unproducto/agregar');?>
+						<div class="col-md-8">
+							<div class="nombre"><?php echo $p['pro_desc'] ?></div>
+		          <div class="rangos col-md-12">
+								<table>
+										<caption>Precio mayorista</caption>
 
-												<?php foreach ($rango as $r) {?>
-													<tr>
-																<th data-field="cant">De :</th>
-																<td><?php echo $r['ri']?></td>
-																<?php if (!isset($r['rf'])) { ?>
-																	<th data-field="cant">O :</th>
-																	<td><?php echo $r['rf']?></td>
-																	<th data-field="cant">Precio :</th>
-																	<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
-																<?php }else{?>
-																	<?php if ($r['rf']=='999999'){?>
+													<?php foreach ($rango as $r) {?>
+														<tr>
+																	<th data-field="cant">De :</th>
+																	<td><?php echo $r['ri']?></td>
+																	<?php if (!isset($r['rf'])) { ?>
 																		<th data-field="cant">O :</th>
-																		<td><?php echo 'mas'?></td>
-																	<?php }else{ ?>
-																		<th data-field="cant">A :</th>
 																		<td><?php echo $r['rf']?></td>
+																		<th data-field="cant">Precio :</th>
+																		<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
+																	<?php }else{?>
+																		<?php if ($r['rf']=='999999'){?>
+																			<th data-field="cant">O :</th>
+																			<td><?php echo 'mas'?></td>
+																		<?php }else{ ?>
+																			<th data-field="cant">A :</th>
+																			<td><?php echo $r['rf']?></td>
+																		<?php } ?>
+																		<th data-field="cant">Precio :</th>
+																		<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
 																	<?php } ?>
-																	<th data-field="cant">Precio :</th>
-																	<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
-																<?php } ?>
-													</tr>
-												<?php
-												}?>
+														</tr>
+													<?php
+													}?>
 
 
-							</table>
-	          </div>
-		        <div class="form col-md-12">
-							<div class="precio">Precio: $<?php echo number_format($p['precio'],'0',',','.')?></div>
-							<div class="diponibilidad">Si o no stock</div>
-		          <div class="btnAgregar">
-
-									<?php echo form_submit('action','Agregar al carro'); ?>
-
+								</table>
 		          </div>
-						</div>
-	        </div>
+
+							<!-- Info -->
+
+			        <div class="form col-md-12">
+								<div class="precio">Precio: $<?php echo number_format($p['precio'],'0',',','.')?></div>
+								<div class="diponibilidad">Si o no stock</div>
+			          <div class="btnAgregar">
+										<?php echo form_submit('action','Agregar al carro'); ?>
+			          </div>
+							</div>
+		        </div>
 					</div>
+					<!-- Ocultos -->
 					<?php echo form_hidden('id', $p['pro_codprod']); ?>
 					<?php echo form_hidden('name', $p['pro_desc']); ?>
 					<?php echo form_hidden('price', $p['precio']); ?>
-
 					<?php echo form_close(); ?>
 					<?php } ?>
+
 				</div>
 			</div>
 		</div>

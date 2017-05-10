@@ -2,7 +2,7 @@
 .redes{
   background-color: #cecece;
   min-height: 200px;
-  padding-top: 100px;
+  padding-top: 10px;
 }
 
 .redes h3{
