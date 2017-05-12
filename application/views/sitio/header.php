@@ -20,8 +20,8 @@
     <link href="<?php echo site_url('css/bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?php echo site_url('css/animate.css');?>" rel="stylesheet">
       <!-- Iconos de inicio -->
-    <link rel="icon" href="http://www.libreriagiorgio.cl/lg/imagenes/icono.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="http://www.libreriagiorgio.cl/lg/imagenes/icono.ico" type="image/x-icon" />
+    <link rel="icon" href="<?php echo site_url('img/g2.png');?>" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php echo site_url('img/g2.png');?>" type="image/x-icon" />
     <link rel="canonical" href=""/>
       <!-- FALTA font -->
 
