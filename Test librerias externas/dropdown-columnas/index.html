@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bootstrap Multi Column Dropdown Menu Tutorial - alijafarian.com</title>
+<link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
+<link href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+
+<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: 'Oswald', sans-serif;
+	}
+
+	body {
+		background: url(../images/texture_green_cup.jpg);
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	.content {
+		width: 80%;
+		margin: 50px auto;
+		padding: 20px;
+	}
+	.content h1 {
+		font-weight: 400;
+		text-transform: uppercase;
+		margin: 0;
+		color: #fff;
+	}
+	.content h2 {
+		font-weight: 400;
+		text-transform: uppercase;
+		color: #333;
+		margin: 0 0 20px;
+	}
+	.content p {
+		font-size: 1em;
+		font-weight: 300;
+		line-height: 1.5em;
+		margin: 0 0 20px;
+	}
+	.content p:last-child {
+		margin: 0;
+	}
+	.content a.button {
+		display: inline-block;
+		padding: 10px 20px;
+		background: #ff0;
+		color: #000;
+		text-decoration: none;
+	}
+	.content a.button:hover {
+		background: #000;
+		color: #ff0;
+	}
+	.content.title {
+		position: relative;
+		background: #333;
+	}
+	.content.title h1 span.demo {
+		display: inline-block;
+		font-size: .5em;
+		padding: 10px;
+		background: #fff;
+		color: #333;
+		vertical-align: top;
+	}
+	.content.title .back-to-article {
+		position: absolute;
+		bottom: -20px;
+		left: 20px;
+	}
+	.content.title .back-to-article a {
+		padding: 10px 20px;
+		background: #f60;
+		color: #fff;
+		text-decoration: none;
+	}
+	.content.title .back-to-article a:hover {
+		background: #f90;
+	}
+	.content.title .back-to-article a i {
+		margin-left: 5px;
+	}
+	.content.white {
+		background: #fff;
+		box-shadow: 0 0 10px #999;
+	}
+	.content.black {
+		background: #000;
+	}
+	.content.black p {
+		color: #999;
+	}
+	.content.black p a {
+		color: #08c;
+	}
+
+
+	.dropdown-menu {
+		min-width: 200px;
+	}
+	.dropdown-menu.columns-2 {
+		min-width: 400px;
+	}
+	.dropdown-menu.columns-3 {
+		min-width: 600px;
+	}
+	.dropdown-menu li a {
+		padding: 5px 15px;
+		font-weight: 300;
+	}
+	.multi-column-dropdown {
+		list-style: none;
+	}
+	.multi-column-dropdown li a {
+		display: block;
+		clear: both;
+		line-height: 1.428571429;
+		color: #333;
+		white-space: normal;
+	}
+	.multi-column-dropdown li a:hover {
+		text-decoration: none;
+		color: #262626;
+		background-color: #f5f5f5;
+	}
+
+	@media (max-width: 767px) {
+		.dropdown-menu.multi-column {
+			min-width: 240px !important;
+			overflow-x: hidden;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.content {
+			width: 90%;
+			margin: 50px auto;
+			padding: 10px;
+		}
+	}
+</style>
+
+</head>
+
+<body>
+
+<div class="content title">
+	<h1>Bootstrap Multi-Column Dropdown Menu <span class="demo">Demo</h1>
+	<span class="back-to-article"><a href="#">Back to Article <i class="fa fa-angle-right"></i></a></span>
+</div>
+<!--/.content-->
+<div class="content white">
+	<nav class="navbar navbar-default" role="navigation">
+	    <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand" href="#">Beach Backpacks</a>
+	    </div>
+	    <!--/.navbar-header-->
+
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+		        <li class="dropdown">
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">One Column <b class="caret"></b></a>
+		            <ul class="dropdown-menu">
+			            <li><a href="#">Action</a></li>
+			            <li><a href="#">Another action</a></li>
+			            <li><a href="#">Something else here</a></li>
+			            <li class="divider"></li>
+			            <li><a href="#">Separated link</a></li>
+			            <li class="divider"></li>
+			            <li><a href="#">One more separated link</a></li>
+		            </ul>
+		        </li>
+		        <li class="dropdown">
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Two Column <b class="caret"></b></a>
+		            <ul class="dropdown-menu multi-column columns-2">
+			            <div class="row">
+				            <div class="col-sm-6">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="#">Action</a></li>
+						            <li><a href="#">Another action</a></li>
+						            <li><a href="#">Something else here that's extra long so we can see how it looks</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">Separated link</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">One more separated link</a></li>
+					            </ul>
+				            </div>
+				            <div class="col-sm-6">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="#">Action</a></li>
+						            <li><a href="#">Another action</a></li>
+						            <li><a href="#">Something else here</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">Separated link</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">One more separated link</a></li>
+					            </ul>
+				            </div>
+			            </div>
+		            </ul>
+		        </li>
+		        <li class="dropdown">
+		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Three Column <b class="caret"></b></a>
+		            <ul class="dropdown-menu multi-column columns-3">
+			            <div class="row">
+				            <div class="col-sm-4">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="#">Action</a></li>
+						            <li><a href="#">Another action</a></li>
+						            <li><a href="#">Something else here</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">Separated link</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">One more separated link</a></li>
+					            </ul>
+				            </div>
+				            <div class="col-sm-4">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="#">Action</a></li>
+						            <li><a href="#">Another action</a></li>
+						            <li><a href="#">Something else here</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">Separated link</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">One more separated link</a></li>
+					            </ul>
+				            </div>
+				            <div class="col-sm-4">
+					            <ul class="multi-column-dropdown">
+						            <li><a href="#">Action</a></li>
+						            <li><a href="#">Another action</a></li>
+						            <li><a href="#">Something else here</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">Separated link</a></li>
+						            <li class="divider"></li>
+						            <li><a href="#">One more separated link</a></li>
+					            </ul>
+				            </div>
+			            </div>
+		            </ul>
+		        </li>
+		        <li><a href="#">Link</a></li>
+	        </ul>
+	    </div>
+	    <!--/.navbar-collapse-->
+	</nav>
+	<!--/.navbar-->
+	<img src="../images/beach-backpacks.jpg" alt="Beach Backpacks" />
+</div>
+<!--/.content-->
+
+<div class="content black">
+	<p><i class="fa fa-asterisk"></i> Tutorial by <a href="/">Ali Jafarian</a>.</p>
+</div>
+<!--/.content-->
+
+<!-------------------- JS -------------------->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+</body>
+</html>
+
+
+select pro_codprod,
+	pro_desc,
+	pro_codfamilia,
+	pro_codsubfamilia
+ from sto_producto where pro_vigencia = 'S' and (pro_codprod like '01013%' or pro_codsubfamilia = '01013')
+ order by pro_codfamilia
+
+select count(DISTINCT pro_codfamilia)
+from sto_producto where pro_vigencia = 'S' and pro_codprod like '010%'
+
+select pro_codprod,
+	pro_desc,
+	pro_codfamilia,
+	pro_codsubfamilia
+ from sto_producto where (pro_codprod like '01013%' or pro_codsubfamilia = '01013')
+ order by pro_codfamilia
+
+ select pro_codprod,
+	pro_desc,
+	pro_codfamilia,
+	pro_codsubfamilia
+ from sto_producto where pro_desc like 'JUEGO DID %'
+ order by pro_codfamilia
+
+ select count(DISTINCT pro_codsubfamilia)
+ from sto_producto where pro_desc like 'JUEGO DID %'
