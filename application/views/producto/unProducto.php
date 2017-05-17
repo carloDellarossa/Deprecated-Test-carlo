@@ -261,43 +261,50 @@ thubs*/
 						<?php echo form_open('index.php/Unproducto/agregar');?>
 						<div class="col-md-8">
 							<div class="nombre"><?php echo $p['pro_desc'] ?></div>
-		          <div class="rangos col-md-12">
-								<table>
-										<caption>Precio mayorista</caption>
 
-													<?php foreach ($rango as $r) {?>
-														<tr>
-																	<th data-field="cant">De :</th>
-																	<td><?php echo $r['ri']?></td>
-																	<?php if (!isset($r['rf'])) { ?>
-																		<th data-field="cant">O :</th>
-																		<td><?php echo $r['rf']?></td>
-																		<th data-field="cant">Precio :</th>
-																		<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
-																	<?php }else{?>
-																		<?php if ($r['rf']=='999999'){?>
+							<?php if ($this->config->item('precio')) { ?>
+			          <div class="rangos col-md-12">
+									<table>
+											<caption>Precio mayorista</caption>
+
+														<?php foreach ($rango as $r) {?>
+															<tr>
+																		<th data-field="cant">De :</th>
+																		<td><?php echo $r['ri']?></td>
+																		<?php if (!isset($r['rf'])) { ?>
 																			<th data-field="cant">O :</th>
-																			<td><?php echo 'mas'?></td>
-																		<?php }else{ ?>
-																			<th data-field="cant">A :</th>
 																			<td><?php echo $r['rf']?></td>
+																			<th data-field="cant">Precio :</th>
+																			<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
+																		<?php }else{?>
+																			<?php if ($r['rf']=='999999'){?>
+																				<th data-field="cant">O :</th>
+																				<td><?php echo 'mas'?></td>
+																			<?php }else{ ?>
+																				<th data-field="cant">A :</th>
+																				<td><?php echo $r['rf']?></td>
+																			<?php } ?>
+																			<th data-field="cant">Precio :</th>
+																			<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
 																		<?php } ?>
-																		<th data-field="cant">Precio :</th>
-																		<td> $ <?php echo number_format($r['precio'],'0',',','.')?></td>
-																	<?php } ?>
-														</tr>
-													<?php
-													}?>
+															</tr>
+														<?php
+														}?>
 
 
-								</table>
-		          </div>
-
+									</table>
+			          </div>
+							<?php } ?>
 							<!-- Info -->
 
 			        <div class="form col-md-12">
-								<div class="precio">Precio: $<?php echo number_format($p['precio'],'0',',','.')?></div>
+								<?php if ($this->config->item('precio')) { ?>
+									<div class="precio">Precio: $<?php echo number_format($p['precio'],'0',',','.')?></div>
+								<?php } ?>
+								
+								<?php if ($this->config->item('cantidad')) { ?>
 								<div class="diponibilidad">Si o no stock</div>
+								<?php } ?>
 			          <div class="btnAgregar">
 										<?php echo form_submit('action','Agregar al carro'); ?>
 			          </div>
