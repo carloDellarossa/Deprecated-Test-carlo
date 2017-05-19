@@ -377,12 +377,16 @@ padding-bottom: 0px;
                             <div class="producto-carro-info">
                               <div class="row">
                                 <div class="tamaño">
-                                  <div class="precio col-lg-6 col-md-6 col-sm-2">
-                                    <span>Precio<br>$ <?php echo number_format($p['price'],'0',',','.')?></span>
-                                  </div>
+                                  <?php if ($this->config->item('precio')) { ?>
+                                    <div class="precio col-lg-6 col-md-6 col-sm-2">
+                                      <span>Precio<br>$ <?php echo number_format($p['price'],'0',',','.')?></span>
+                                    </div>
+                                  <?php } ?>
+
                                   <div class="nombre col-lg-6 col-md-6 col-sm-2">
                                     <span><?php echo $p['name']; ?></span>
                                   </div>
+                                  
                                   <div class="cantidad col-lg-6 col-md-6 col-sm-2">
                                     <span>Cantidad : <?php echo $p['qty']; ?></span>
                                     <?php echo anchor('index.php/Inicio/remove/'.$p['rowid'],'<i class="glyphicon glyphicon-trash"></i>
