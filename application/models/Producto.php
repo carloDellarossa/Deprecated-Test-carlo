@@ -275,7 +275,7 @@ class Producto extends CI_Model {
                     $objtivo = 'sg.aap_texto';
                     $cat = $subGrupo;
                   }
-                  
+
                   //TODO segundo filtro
                   if($filtro==FALSE){
                     $f='';
@@ -315,6 +315,42 @@ class Producto extends CI_Model {
                   return $resultado;
                 }
 //Buscar
-
+public function buscar($aBuscar){
+  $result_set = $this->db->query(
+  "select
+    pro_codprod,
+    pro_desc,
+    pro_glosa,
+    pro_imgdefecto,
+    pro_oferta,
+    pro_novedad,
+    round(r.pre_rangoinicial) as ri,
+    case when r.pre_rangofinal is null then 999999 else round(r.pre_rangofinal) end as rf,
+    round(((100-r.pre_maxdesctorecargo)/100)*r.pre_precio) as precio
+  from
+    sto_precios r ,
+    sto_producto p
+    left join sto_prodsal on pro_codprod = psl_codprod and psl_codbodega = '1'
+    left join sto_prodadic m on m.aap_codprod = pro_codprod and m.aap_codanalisis = '1'
+    left join sto_prodadic g on g.aap_codprod = pro_codprod and g.aap_codanalisis = '11'
+    left join sto_prodadic sg on sg.aap_codprod = pro_codprod and sg.aap_codanalisis = '12'
+    left join sto_prodadic sg1 on sg1.aap_codprod = pro_codprod and sg1.aap_codanalisis = '13'
+    left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
+    left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '1' and pre_correlativo = '1'
+  where
+   (psl_saldo > 1 and pro_vigencia = 'S')
+  and r.pre_codprod = p.pro_codprod
+  and r.pre_rangoinicial = '1'
+  and r.pre_codlista='1'
+  and (pro_codprod SIMILIAR TO '".$aBuscar."'
+  or pro_desc SIMILIAR TO '".$aBuscar."'
+  or pro_glosa SIMILIAR TO '".$aBuscar."'
+  or m.aap_texto SIMILIAR TO '".$aBuscar."'
+  or sg1.aap_texto SIMILIAR TO '".$aBuscar."'
+  or sg2.aap_textoSIMILIAR TO '".$aBuscar."')
+  order by p.feccreacion DESC
+  ");
+return $result_set->result_array();
+}
 
 }
