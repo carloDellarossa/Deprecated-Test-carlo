@@ -338,17 +338,23 @@ public function buscar($aBuscar){
     left join sto_prodadic sg2 on sg2.aap_codprod = pro_codprod and sg2.aap_codanalisis = '14'
     left join sto_precios pre on pre.pre_codprod = pro_codprod and pre_codlista = '1' and pre_correlativo = '1'
   where
-   (psl_saldo > 1 and pro_vigencia = 'S')
+  (
+  psl_saldo > 1
+  and pro_vigencia = 'S'
   and r.pre_codprod = p.pro_codprod
-  and r.pre_rangoinicial = '1'
   and r.pre_codlista='1'
-  and (pro_codprod SIMILIAR TO '".$aBuscar."'
-  or pro_desc SIMILIAR TO '".$aBuscar."'
-  or pro_glosa SIMILIAR TO '".$aBuscar."'
-  or m.aap_texto SIMILIAR TO '".$aBuscar."'
-  or sg1.aap_texto SIMILIAR TO '".$aBuscar."'
-  or sg2.aap_textoSIMILIAR TO '".$aBuscar."')
+  )
+  and
+  (
+   pro_codprod Like ''
+  or pro_desc Like '%ESCOLAR%'
+  or pro_glosa Like '%ESCOLAR%'
+  or m.aap_texto Like '%ESCOLAR%'
+  or sg1.aap_texto Like '%ESCOLAR%'
+  or sg2.aap_texto Like '%ESCOLAR%'
+  )
   order by p.feccreacion DESC
+
   ");
 return $result_set->result_array();
 }
