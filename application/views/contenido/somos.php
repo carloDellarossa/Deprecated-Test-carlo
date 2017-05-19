@@ -16,8 +16,7 @@
     <p>¿Quiénes Somos?</p>
     </div>
     <p>
-    Librería Giorgio es una empresa dedicada a la venta de suministros de oficina, artículos escolares, juguetería, y mucho más... Contamos con instalaciones para la venta de nuestros productos por volumen a empresas, ofreciendo un servicio de despacho completamente gratis. Asímismo disponemos de salas de ventas para atención de público en general, con estacionamientos propios para nuestros clientes. Durante años nos hemos dedicado a ser especialistas en Escolares, ofreciendo todo lo necesario para la Lista Escolar con los mejores precios del mercado. Trabajamos cada día para atender las necesidades y demandas de nuestros clientes, ampliando nuestro stock de productos y marcas asociadas para lograr satisfacción y fidelidad.
-    </p>
+  Librería Giorgio es una empresa dedicada a la venta de suministros de oficina, artículos escolares, juguetería, y mucho más... Contamos con instalaciones para la venta de nuestros productos por volumen a empresas, ofreciendo un servicio de despacho completamente gratis. Asímismo disponemos de salas de ventas para atención de público en general, con estacionamientos propios para nuestros clientes. Durante años nos hemos dedicado a ser especialistas en Escolares, ofreciendo todo lo necesario para la Lista Escolar con los mejores precios del mercado. Trabajamos cada día para atender las necesidades y demandas de nuestros clientes, ampliando nuestro stock de productos y marcas asociadas para lograr satisfacción y fidelidad.    </p>
 
     <div class="title">
     <p>Nuestra historia</p>
