@@ -13,7 +13,10 @@
 	      <li class="col-lg-3 col-md-3 col-sm-6">
 	        <div class="producto">
 	          <a href="<?php echo site_url('index.php/Unproducto?codigo='.urlencode($o['pro_codprod']).'')?>" class="img-responsive" alt="Responsive image">
-	            <div class="producto-imagen">
+              <div class="producto-codigo">
+              <?php echo $o['pro_codprod']?>
+              </div>
+              <div class="producto-imagen">
 								<i></i>
 	              <?php
 	              if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {

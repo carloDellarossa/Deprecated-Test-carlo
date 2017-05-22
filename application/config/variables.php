@@ -3,6 +3,6 @@
 //variables a mostrar
 $config['precio']= True;
 $config['cantidad'] = True;
-$config['codChilecompra'] = False;
+$config['codChilecompra'] = True;
 
 ?>

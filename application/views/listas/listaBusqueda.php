@@ -104,11 +104,11 @@
 <!--Lista de productos-->
 <div class="lista-todos-productos">
   <div class="title container">
-    <h1>Productos mas vendidos</h1>
+    <h1>Resultados Busqueda</h1>
   </div>
   <div class="container-fluid">
 	    <ul class="lista-productos">
-	      <?php foreach ($productosL as $p){
+	      <?php foreach ($productosB as $p){
 					echo form_open('index.php/Inicio/agregar');
 	        $file = 'http://www.libreriagiorgio.cl/lg/imagenes/codigos/' .$p['pro_codprod']. '.jpg';
 	        $file_headers = @get_headers($file); ?>

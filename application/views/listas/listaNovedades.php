@@ -13,6 +13,9 @@
 	      <li class="col-lg-3 col-md-3 col-sm-6">
 	        <div class="producto">
 	          <a href="<?php echo site_url('index.php/Unproducto?codigo='.urlencode($n['pro_codprod']).'')?>">
+              <div class="producto-codigo">
+                <?php echo $n['pro_codprod']?>
+              </div>
 	            <div class="producto-imagen">
 								<i></i>
 	              <?php
@@ -33,7 +36,7 @@
   		                  $<?php echo number_format($n['precio'],'0',',','.')?>
   		                </div>
                     <?php } ?>
-                    
+
 										<div class="btnAgregar">
 											<?php echo form_submit('action','Agregar al carro'); ?>
 										</div>

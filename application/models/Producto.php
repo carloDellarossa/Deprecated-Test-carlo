@@ -354,7 +354,6 @@ public function buscar($aBuscar){
   or sg2.aap_texto Like '%ESCOLAR%'
   )
   order by p.feccreacion DESC
-
   ");
 return $result_set->result_array();
 }

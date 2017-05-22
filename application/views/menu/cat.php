@@ -335,9 +335,9 @@ padding-bottom: 0px;
           </ul><!-- termina menu categorias -->
 
           <!-- Buscar -->
-          <form class="navbar-form navbar-left">
+          <form class="navbar-form navbar-left" action="<?php echo site_url('index.php/Busqueda/buscar');?>" method="post">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Buscar">
+              <input type="text" class="form-control" placeholder="Buscar" name="keyword">
             </div>
             <button type="submit" class="btn btn-default">Buscar</button>
           </form>
@@ -386,7 +386,7 @@ padding-bottom: 0px;
                                   <div class="nombre col-lg-6 col-md-6 col-sm-2">
                                     <span><?php echo $p['name']; ?></span>
                                   </div>
-                                  
+
                                   <div class="cantidad col-lg-6 col-md-6 col-sm-2">
                                     <span>Cantidad : <?php echo $p['qty']; ?></span>
                                     <?php echo anchor('index.php/Inicio/remove/'.$p['rowid'],'<i class="glyphicon glyphicon-trash"></i>
