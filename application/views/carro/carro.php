@@ -11,10 +11,10 @@ div{
 		<caption>Carro de compras</caption>
 		<thead>
 			<tr>
-				<th>Codigo</th>
+				<th>Código</th>
 				<th>Nombre</th>
 				<th>Precio</th>
-				<th>Cantida</th>
+				<th>Cantidad</th>
 				<th>Eliminar del carro</th>
 				<th>Modificar el carro</th>
 				<th></th>
@@ -53,9 +53,9 @@ echo "no hay productos";
 			<td><h3> <?php echo anchor('index.php/Inicio', '<i class="glyphicon glyphicon-home"></i>
 			<span class="hidden-tablet">Seguir comprando</span>') ?> </h3></td>
 			<td><h3> <?php echo anchor('index.php/Orden', '<i class="glyphicon glyphicon-ok"></i>
-			<span class="hidden-tablet">Finialisar la compra</span>') ?> </h3></td>
+			<span class="hidden-tablet">Finalizar la compra</span>') ?> </h3></td>
 			<td><h3> <?php echo anchor('index.php/Cot', '<i class="glyphicon glyphicon-print"></i>
-			<span class="hidden-tablet">Crear cotisacion</span>') ?> </h6></td>
+			<span class="hidden-tablet">Crear cotización </span>') ?> </h6></td>
 		</tr>
 	</table>
 </div>

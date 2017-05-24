@@ -189,7 +189,7 @@
                                 <a href="#">Ventas</a>
                             </li>
                             <li>
-                                <a href="#">Cotisacion</a>
+                                <a href="#">Cotisación</a>
                             </li>
                             <li>
                                 <a href="#">Ordenes de envio</a>

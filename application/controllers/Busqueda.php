@@ -94,7 +94,7 @@ public function buscar(){
 
 	$this->load->view('listas/listaBusqueda',$data1);
 		//maqueta btm
-	$this->load->view('sitio/redesSociales');
+	
 	$this->load->view('sitio/sucursales');
 	$this->load->view('sitio/footer');
 }

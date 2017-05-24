@@ -24,7 +24,7 @@ class Busqueda extends CI_Controller {
 		//
 		// $this->load->view('producto/busqueda',$data);
 		//
-		// $this->load->view('sitio/redesSociales');
+		// 
 		// $this->load->view('sitio/sucursales');
 		// $this->load->view('sitio/footer');
 

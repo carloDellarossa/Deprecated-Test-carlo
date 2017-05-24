@@ -25,7 +25,7 @@ class Inicio extends CI_Controller {
 		$this->load->view('listas/listaProductos',$data1);
 		$this->load->view('listas/listaOfertas',$data2);
 		$this->load->view('listas/listaNovedades',$data3);
-		$this->load->view('sitio/redesSociales');
+		
 		$this->load->view('sitio/sucursales');
 		$this->load->view('sitio/footer');
 	}

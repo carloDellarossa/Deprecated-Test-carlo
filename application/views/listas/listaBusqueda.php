@@ -104,7 +104,7 @@
 <!--Lista de productos-->
 <div class="lista-todos-productos">
   <div class="title container">
-    <h1>Resultados Busqueda</h1>
+    <h1>Resultados Búsqueda</h1>
   </div>
   <div class="container-fluid">
 	    <ul class="lista-productos">

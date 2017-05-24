@@ -1,6 +1,6 @@
 <style>
 .sucursales{
-  background-color: #b2b1b1;
+  background-color: #525052;
 }
 
 .sucursales ul {
@@ -9,11 +9,12 @@
 
 .sucursales h5{
   text-align: center;
+  color: #ffffff;
 }
 
 .sucursales a{
   text-decoration : none;
-  color : #cecece;
+  color: #ffffff;
 }
 
 @media (max-width: 770px) {

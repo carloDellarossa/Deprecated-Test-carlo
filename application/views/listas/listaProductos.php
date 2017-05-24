@@ -56,8 +56,8 @@
 .lista-todos-productos .producto-imagen img{
 	display:inline-block;
 	vertical-align:middle;
-	width: 100%;
-	height: auto;
+	max-width:210px;
+	max-height:210px
 }
 .lista-todos-productos .producto-info{
 	position:relative;

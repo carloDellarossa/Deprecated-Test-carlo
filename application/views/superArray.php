@@ -43,7 +43,7 @@
                         'PLUMONES PERMANENTES',
                         'PLUMONES PERMANENTES',
                         'PLUMONES PIZARRA',
-                        'PLUMON PINTURA ÓLEO',
+                        'PLUMÓN PINTURA ÓLEO',
                         'PORTAMINAS',
                         'RAPIDOGRAPH',
                         'RECARGA PLUMONES',

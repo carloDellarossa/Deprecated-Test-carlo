@@ -4,7 +4,7 @@
 		<caption>Carro de compras</caption>
 		<thead>
 			<tr>
-				<th>Codigo</th>
+				<th>Código</th>
 				<th>Nombre</th>
 				<th>Precio</th>
 				<th>Row id</th>

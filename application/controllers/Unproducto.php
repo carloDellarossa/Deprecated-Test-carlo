@@ -25,7 +25,7 @@ class Unproducto extends CI_Controller {
 
 		$this->load->view('producto/unProducto',$data);
 
-		$this->load->view('sitio/redesSociales');
+		
 		$this->load->view('sitio/sucursales');
 		$this->load->view('sitio/footer');
 

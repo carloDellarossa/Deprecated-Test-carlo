@@ -27,7 +27,7 @@
 						<th>Codigo</th>
 						<th>Nombre</th>
 						<th>Precio</th>
-						<th>Cantida</th>
+						<th>Cantidad</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -63,14 +63,14 @@
 			<h3> Ingrese sus datos </h3>
 			<p><?php echo form_label('Nombre : ') ,form_input('Nombre', 'nombre');?></p>
 			<p><?php echo form_label('Rut : ') ,form_input('Rut', '11111111-1');?></p>
-			<p><?php echo form_label('Telefono : ') ,form_input('Telefono', '+56 1 111111111');?></p>
+			<p><?php echo form_label('Teléfono : ') ,form_input('Teléfono', '+56 1 111111111');?></p>
 			<p><?php echo form_label('Correo : ') ,form_input('Correo', 'nombre@ejemplo.cl'); ?></p>
 		  </div>
 
 			<div class="col-md-4">
 			<!-- Datos de envio -->
 			<h3> Ingrese datos de envio </h3>
-			<p><?php echo form_label('Direccion : ') ,form_input('Direccion', 'calle numero');?></p>
+			<p><?php echo form_label('Dirección : ') ,form_input('Dirección', 'calle numero');?></p>
 			<p><?php echo form_label('Departamento : ') ,form_input('Departamento', 'dpto');?></p>
 			<p><?php echo form_label('Ciudad : ') ,form_input('Ciudad', 'Ciudad');?></p>
 			</div>
@@ -78,9 +78,9 @@
 			<div class="col-md-4">
 			<!-- Datos de pago -->
 			<h3> Metodo de pago</h3>
-			<p><?php echo form_label('Metodos de pago : ') ,form_dropdown('pago',array('Efectivo','Targeta','Deposito'));?></p>
-			<!-- Finalisar compra -->
-			<p><?php echo form_submit('action','Finalisar compra');?></p>
+			<p><?php echo form_label('Metodos de pago : ') ,form_dropdown('pago',array('Efectivo','Tarjeta','Deposito'));?></p>
+			<!-- Finalizar compra -->
+			<p><?php echo form_submit('action','Finalizar compra');?></p>
 			<?php echo form_close(); ?>
 			</div>
 		</div>

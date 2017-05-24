@@ -1,91 +1,91 @@
 <style>
 .navbar-top {
-  background-color: #cecece;
-  border-color: #cecece;
+  background-color: #6f6a70;
+  border-color: #525052;
 }
 .navbar-top .navbar-brand {
-  color: #ecf0f1;
+  color: #ffffff;
 }
 .navbar-top .navbar-brand:hover,
 .navbar-top .navbar-brand:focus {
-  color: #b2b1b1;
+  color: #aaa9ac;
 }
 .navbar-top .navbar-text {
-  color: #ecf0f1;
+  color: #ffffff;
 }
 .navbar-top .navbar-nav > li > a {
-  color: #ecf0f1;
+  color: #ffffff;
 }
 .navbar-top .navbar-nav > li > a:hover,
 .navbar-top .navbar-nav > li > a:focus {
-  color: #b2b1b1;
+  color: #aaa9ac;
 }
 .navbar-top .navbar-nav > li > .dropdown-menu {
-  background-color: #cecece;
+  background-color: #6f6a70;
 }
 .navbar-top .navbar-nav > li > .dropdown-menu > li > a {
-  color: #ecf0f1;
+  color: #ffffff;
 }
 .navbar-top .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar-top .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #b2b1b1;
-  background-color: #cecece;
+  color: #aaa9ac;
+  background-color: #525052;
 }
 .navbar-top .navbar-nav > li > .dropdown-menu > li > .divider {
-  background-color: #cecece;
+  background-color: #525052;
 }
 .navbar-top .navbar-nav .open .dropdown-menu > .active > a,
 .navbar-top .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-top .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #b2b1b1;
-  background-color: #cecece;
+  color: #aaa9ac;
+  background-color: #525052;
 }
 .navbar-top .navbar-nav > .active > a,
 .navbar-top .navbar-nav > .active > a:hover,
 .navbar-top .navbar-nav > .active > a:focus {
-  color: #b2b1b1;
-  background-color: #cecece;
+  color: #aaa9ac;
+  background-color: #525052;
 }
 .navbar-top .navbar-nav > .open > a,
 .navbar-top .navbar-nav > .open > a:hover,
 .navbar-top .navbar-nav > .open > a:focus {
-  color: #b2b1b1;
-  background-color: #cecece;
+  color: #aaa9ac;
+  background-color: #525052;
 }
 .navbar-top .navbar-toggle {
-  border-color: #cecece;
+  border-color: #525052;
 }
 .navbar-top .navbar-toggle:hover,
 .navbar-top .navbar-toggle:focus {
-  background-color: #cecece;
+  background-color: #525052;
 }
 .navbar-top .navbar-toggle .icon-bar {
-  background-color: #ecf0f1;
+  background-color: #ffffff;
 }
 .navbar-top .navbar-collapse,
 .navbar-top .navbar-form {
-  border-color: #ecf0f1;
+  border-color: #ffffff;
 }
 .navbar-top .navbar-link {
-  color: #ecf0f1;
+  color: #ffffff;
 }
 .navbar-top .navbar-link:hover {
-  color: #b2b1b1;
+  color: #aaa9ac;
 }
 
 @media (max-width: 767px) {
   .navbar-top .navbar-nav .open .dropdown-menu > li > a {
-    color: #ecf0f1;
+    color: #ffffff;
   }
   .navbar-top .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-top .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #b2b1b1;
+    color: #aaa9ac;
   }
   .navbar-top .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-top .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-top .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #b2b1b1;
-    background-color: #cecece;
+    color: #aaa9ac;
+    background-color: #525052;
   }
 }
 
@@ -143,7 +143,7 @@ ul.contacto {
 		  <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#barra" aria-expanded="false">
-            <span class="sr-only">Menu Mobil</span>
+            <span class="sr-only">Menú Móvil</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -154,9 +154,9 @@ ul.contacto {
 		    <div class="collapse navbar-collapse" id="barra">
 
 
-		    	<!--Telefono -->
+		    	<!--Teléfono -->
 				<ul class="nav navbar-nav navbar-left">
-		    	<li><p class="navbar-text navbar-left">Telefono: <a href="#" class="navbar-link">+5641 2785 336</a></p></li>
+		    	<li><p class="navbar-text navbar-left">Teléfono: <a href="#" class="navbar-link">+5641 2785 336</a></p></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
 			        <li><a href="http://localhost/Test-carlo/index.php/Somos">Quienes Somos</a></li>
@@ -195,10 +195,10 @@ ul.contacto {
               </li>
               <!-- menu login -->
               <li class="dropdown">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">Inisiar secion<span class="caret"></span></a>
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">Inisiar sección<span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
                     <div class="col-lg-12">
-                        <div class="text-center"><h3><b>Inicio de seccion</b></h3></div>
+                        <div class="text-center"><h3><b>Inicio de sección</b></h3></div>
                         <form id="ajax-login-form" action="" method="post" role="form" autocomplete="off">
                             <div class="form-group">
                                 <label for="username">E-mail</label>
@@ -238,7 +238,7 @@ ul.contacto {
               </li>
 			        <!--Menu tiendas -->
 			        <li class="dropdown">
-			        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Seleccion Sala<span class="caret"></span></a>
+			        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Selección Sala<span class="caret"></span></a>
 			        <ul class="tiendas dropdown-menu animated slideInRight" >
                 <li class=""><a href="#">
                   <span class="home glyphicon glyphicon-home"></span>Camilo Henríquez 2299, Concepción</a></li>

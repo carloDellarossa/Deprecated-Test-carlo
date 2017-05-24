@@ -290,7 +290,7 @@ padding-bottom: 0px;
 
 		    	<!--Boton vista en mibil -->
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Menu Mobil</span>
+					<span class="sr-only">Menú Móvil</span>
 				    <span class="icon-bar"></span>
 				    <span class="icon-bar"></span>
 				    <span class="icon-bar"></span>
@@ -422,7 +422,7 @@ padding-bottom: 0px;
                       </li>
                       <li class="col-lg-12 col-md-12 col-sm-12" style="text-align : center">
                         <div>
-                          <h4><i class="glyphicon glyphicon-ok"></i><?php echo anchor('index.php/Orden', 'Finalisar la compra') ?></h4>
+                          <h4><i class="glyphicon glyphicon-ok"></i><?php echo anchor('index.php/Orden', 'Finalizar la compra') ?></h4>
                         </div>
                       </li>
                        <?php }else{ ?>

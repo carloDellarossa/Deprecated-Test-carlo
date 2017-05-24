@@ -76,7 +76,7 @@
 				<th>Codigo</th>
 				<th>Nombre</th>
 				<th>Precio</th>
-				<th>Cantida</th>
+				<th>Cantidad</th>
 				<th></th>
 			</tr>
 		<?php foreach ($productosC as $item): ?>

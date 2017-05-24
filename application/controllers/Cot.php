@@ -17,7 +17,7 @@ class Cot extends CI_Controller {
 		// resumen de la orden
 		$this->load->view('orden/cotisacion');
 
-		$this->load->view('sitio/redesSociales');
+		
 		$this->load->view('sitio/sucursales');
 		$this->load->view('sitio/footer');
 	}

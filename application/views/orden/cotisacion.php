@@ -1,5 +1,5 @@
 <!-- Resumen del carro -->
-<br><h1 align="center">Cotisacion</h1>
+<br><h1 align="center">Cotisación</h1>
 <?php if($productosC = $this->cart->contents()):?>
 
 <div clss="container">
@@ -11,7 +11,7 @@
 			<tr>
 				<th>Nombre</th>
 				<th>Precio</th>
-				<th>Cantida</th>
+				<th>Cantidad</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -36,7 +36,7 @@
 <?php
 // echo form_label('Nombre : ') ,form_input('Nombre', 'nombre');
 // echo form_label('Rut : ') ,form_input('Rut', '11111111-1');
-// echo form_label('Telefono : ') ,form_input('Telefono', '+56 1 111111111');
+// echo form_label('Teléfono : ') ,form_input('Teléfono', '+56 1 111111111');
 // echo form_label('Correo : ') ,form_input('Correo', 'nombre@ejemplo.cl');
 ?>
 <form>
@@ -52,7 +52,7 @@
     <label for="exampleInputEmail1">Email</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
   </div>
-  <button type="submit" class="btn btn-default">Cotisar</button>
+  <button type="submit" class="btn btn-default">Cotizar</button>
 </form>
 		</div>
 	</div>

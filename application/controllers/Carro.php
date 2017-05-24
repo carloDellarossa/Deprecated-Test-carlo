@@ -19,7 +19,7 @@ class Carro extends CI_Controller {
 		//carro por ahora
 		$this->load->view('carro/carro');
 
-		$this->load->view('sitio/redesSociales');
+		
 		$this->load->view('sitio/sucursales');
 		$this->load->view('sitio/footer');
 

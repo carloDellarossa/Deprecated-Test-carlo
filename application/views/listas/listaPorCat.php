@@ -146,13 +146,14 @@
 
 <?php
 if (count($pXcat) == 0) {
-	echo '<br>No hay productos diponobles en esta catergoria';
+	echo '<br>No hay productos disponibles en esta categoría';
 }else{ ?>
 <div class="lista-todos-productos">
   <div class="title container">
 
-    <h5><?php echo $pXcat[0]['grupo'];?></h5>
-		TODO Filtrar por mas de un paramatro para que no re resetee ejemplo filtar por marca primero luego por subgrupo2 y q vuelva a mostrar todas las marcas
+    <h5><?php echo $pXcat[0]['grupo'];
+		//		TODO Filtrar por mas de un paramatro para que no re resetee ejemplo filtar por marca primero luego por subgrupo2 y q vuelva a mostrar todas las marcas
+?></h5>
   </div>
 	<div>
 		<nav class="paginacion" aria-label="Page navigation">

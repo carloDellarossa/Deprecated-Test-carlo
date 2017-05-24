@@ -93,7 +93,7 @@ public function verPorCat(){
 
 	$this->load->view('listas/listaPorCat',$data1);
 		//maqueta btm
-	$this->load->view('sitio/redesSociales');
+	
 	$this->load->view('sitio/sucursales');
 	$this->load->view('sitio/footer');
 }
