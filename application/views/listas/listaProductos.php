@@ -116,7 +116,16 @@
 	        <div class="producto">
 	          <a href="<?php echo site_url('index.php/Unproducto?codigo='.urlencode($p['pro_codprod']).'')?>">
 							<div class="producto-codigo">
+								<div class="col-lg-6 col-md-6 col-sm-6">
 								<?php echo $p['pro_codprod']?>
+								</div>
+							<?php if ($this->config->item('codChilecompra')) { ?>
+								<div class="col-lg-6 col-md-6 col-sm-6">
+								<p>ID: Chile compra</p>
+										<p>ID: Chile compra</p>
+												<p>ID: Chile compra</p>
+								</div>
+							<?php } ?>
 							</div>
 	            <div class="producto-imagen">
 								<i></i>
